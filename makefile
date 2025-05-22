@@ -1,31 +1,35 @@
 ###############################################################################
-# pkt_inspector makefile  —  build pkt_inspector.elf
+# pkt_inspector – Feature-dumper firmware (lwip_final)
 ###############################################################################
 
-PROJ_NAME := pkt_inspector
-
-# ←←← 根據實際路徑調整；這表示「上一層」
+PROJ_NAME  := lwip_final          # 產出 build/lwip_final.elf
 STANDALONE := ..
 
-# -------- source files ------------------------------------------------------
+# ---------------- source list -----------------------------------------------
 SRCS := \
     src/main.c \
     src/extract_features.c \
     src/common.c \
     src/mac.c \
     src/rtl8211fd_drv.c \
-    ${STANDALONE}/common/start.S \
-    ${STANDALONE}/common/trap.S
+    $(STANDALONE)/common/start.S \
+    $(STANDALONE)/common/trap.S
 
-# -------- include paths -----------------------------------------------------
+# ---------------- include paths ---------------------------------------------
 CFLAGS += -Isrc/include
 CFLAGS += -Isrc
-CFLAGS += -I${STANDALONE}/driver
-CFLAGS += -I${STANDALONE}/bsp/efnix/EfxSapphireSoc/include
-CFLAGS += -Os -g
+CFLAGS += -Isrc/user/arch
+CFLAGS += -I$(STANDALONE)/driver
+CFLAGS += -I$(STANDALONE)/bsp/efnix/EfxSapphireSoc/include
 CFLAGS += -DportasmHANDLE_INTERRUPT=external_interrupt_handler
+CFLAGS += -Os -g
 
-# -------- bring in BSP / linker / gcc rules ---------------------------------
-include ${STANDALONE}/common/bsp.mk
-include ${STANDALONE}/common/riscv64-unknown-elf.mk
-include ${STANDALONE}/common/standalone.mk
+# ---------------- BSP / linker / GCC rules ----------------------------------
+include $(STANDALONE)/common/bsp.mk
+include $(STANDALONE)/common/riscv64-unknown-elf.mk
+include $(STANDALONE)/common/standalone.mk
+
+# ---------------- 補一條規則，把 .elf 複製成無副檔名 ------------------------
+build/$(PROJ_NAME): build/$(PROJ_NAME).elf
+	@mkdir -p build
+	@cp  $<  $@
