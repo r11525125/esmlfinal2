@@ -15,165 +15,193 @@
 #include "plic.h"
 #include "lwiperf.h"
 #include "compatibility.h"
-#include "mac.h"
 #include "rtl8211fd_drv.h"
 
-/* --- NEW: 解析封包所需表頭 ------------------------------------ */
-#include "lwip/etharp.h"       /* ETHTYPE_IP, SIZEOF_ETH_HDR, struct eth_hdr */
-#include "lwip/ip4.h"          /* struct ip_hdr, IPH_* */
-#include "lwip/udp.h"          /* IP_PROTO_UDP */
-#include "lwip/tcp.h"          /* IP_PROTO_TCP */
-#include "lwip/prot/udp.h"     /* struct udp_hdr */
-#include "lwip/prot/tcp.h"     /* struct tcp_hdr */
-/* --------------------------------------------------------------- */
+/* ————— IP 协议号硬编码 ————— */
+#define PROTO_ICMP 1
+#define PROTO_TCP   6
+#define PROTO_UDP  17
+/* ———————————————————— */
 
-/* Static IP ADDRESS: IP_ADDR0.IP_ADDR1.IP_ADDR2.IP_ADDR3 */
+#include "lwip/etharp.h"    /* ETHTYPE_IP, ETHTYPE_ARP, SIZEOF_ETH_HDR */
+#include "lwip/ip4.h"       /* struct ip_hdr, IPH_* */
+#include "lwip/prot/udp.h"  /* struct udp_hdr */
+#include "lwip/prot/tcp.h"  /* struct tcp_hdr */
+
 #define IP_ADDR0   configIP_ADDR0
 #define IP_ADDR1   configIP_ADDR1
 #define IP_ADDR2   configIP_ADDR2
 #define IP_ADDR3   configIP_ADDR3
 
-/* NETMASK */
 #define NETMASK_ADDR0   255
 #define NETMASK_ADDR1   255
 #define NETMASK_ADDR2   255
 #define NETMASK_ADDR3     0
 
-/* Gateway Address */
 #define GW_ADDR0   configIP_ADDR0
 #define GW_ADDR1   configIP_ADDR1
 #define GW_ADDR2   configIP_ADDR2
 #define GW_ADDR3     1
 
-ip4_addr_t ipaddr;
-ip4_addr_t netmask;
-ip4_addr_t gw;
-ip4_addr_t client_addr;
-
+ip4_addr_t ipaddr, netmask, gw;
 struct netif gnetif;
+
 void crash(void);
 void trap_entry(void);
 void userInterrupt(void);
 
-/* ---------- 時間基準 ---------- */
-u32_t sys_jiffies(void)
-{
+/* ---------- 时间基准 ---------- */
+u32_t sys_jiffies(void) {
     u32 t = machineTimer_getTime(BSP_MACHINE_TIMER);
     return t / (SYSTEM_MACHINE_TIMER_HZ / 1000);
 }
-
-u32_t sys_now(void)
-{
+u32_t sys_now(void) {
     return sys_jiffies();
 }
 
-/* ---------- NEW: 封包 sniff hook ---------- */
-static err_t sniff_input(struct pbuf *p, struct netif *netif)
-{
+/* ---------- sniff + filter hook ---------- */
+static err_t sniff_input(struct pbuf *p, struct netif *netif) {
     const struct eth_hdr *eth = (const struct eth_hdr *)p->payload;
+    u16_t etype = lwip_ntohs(eth->type);
 
-    bsp_printf("\r\n[PKT] len=%u  "
-               "%02X:%02X:%02X:%02X:%02X:%02X -> "
-               "%02X:%02X:%02X:%02X:%02X:%02X  etype=0x%04X",
-               p->tot_len,
-               eth->src.addr[0], eth->src.addr[1], eth->src.addr[2],
-               eth->src.addr[3], eth->src.addr[4], eth->src.addr[5],
-               eth->dest.addr[0], eth->dest.addr[1], eth->dest.addr[2],
-               eth->dest.addr[3], eth->dest.addr[4], eth->dest.addr[5],
-               lwip_htons(eth->type));
+    /* 1) 放行 ARP */
+    if (etype == ETHTYPE_ARP) {
+        bsp_printf("[PASS-ARP] len=%lu\r\n", (unsigned long)p->tot_len);
+        return ethernet_input(p, netif);
+    }
 
-    /* IPv4 進一步解析 */
-    if (eth->type == PP_HTONS(ETHTYPE_IP) && p->len >= (SIZEOF_ETH_HDR + IP_HLEN))
-    {
-        const struct ip_hdr *iph = (const struct ip_hdr *)((u8_t *)p->payload + SIZEOF_ETH_HDR);
-        u8_t proto      = IPH_PROTO(iph);
-        u16_t ihl_bytes = IPH_HL_BYTES(iph);
+    /* 2) 只处理 IPv4，其它丢弃 */
+    if (etype != ETHTYPE_IP || p->tot_len < SIZEOF_ETH_HDR + IP_HLEN) {
+        bsp_printf("[DROP-ETH] eth=0x%04X tot_len=%lu\r\n",
+                   etype, (unsigned long)p->tot_len);
+        pbuf_free(p);
+        return ERR_OK;
+    }
 
-        bsp_printf("  IP %d.%d.%d.%d -> %d.%d.%d.%d  proto=%u",
+    /* 3) 解析 IPv4 */
+    const struct ip_hdr *iph = (const struct ip_hdr *)((u8_t *)p->payload + SIZEOF_ETH_HDR);
+    u8_t proto = IPH_PROTO(iph);
+    u16_t ihl   = IPH_HL_BYTES(iph);
+
+    /* 4) 放行 ICMP (Ping) */
+    if (proto == PROTO_ICMP) {
+        bsp_printf("[PASS-ICMP] %d.%d.%d.%d → %d.%d.%d.%d len=%lu\r\n",
                    ip4_addr1(&iph->src), ip4_addr2(&iph->src),
                    ip4_addr3(&iph->src), ip4_addr4(&iph->src),
                    ip4_addr1(&iph->dest), ip4_addr2(&iph->dest),
                    ip4_addr3(&iph->dest), ip4_addr4(&iph->dest),
-                   proto);
+                   (unsigned long)p->tot_len);
+        return ethernet_input(p, netif);
+    }
 
-        if (proto == IP_PROTO_UDP && p->len >= SIZEOF_ETH_HDR + ihl_bytes + sizeof(struct udp_hdr))
+    /* 5) 丢弃 mDNS (224.0.0.251:5353) */
+    if (proto == PROTO_UDP) {
+        const struct udp_hdr *udph = (const struct udp_hdr *)((u8_t *)iph + ihl);
+        if (ip4_addr3(&iph->dest) == 224 &&
+            ip4_addr4(&iph->dest) == 251 &&
+            lwip_ntohs(udph->dest)    == 5353)
         {
-            const struct udp_hdr *udph = (const struct udp_hdr *)((u8_t *)iph + ihl_bytes);
-            bsp_printf("  UDP src=%u dst=%u",
-                       lwip_htons(udph->src), lwip_htons(udph->dest));
-        }
-        else if (proto == IP_PROTO_TCP && p->len >= SIZEOF_ETH_HDR + ihl_bytes + sizeof(struct tcp_hdr))
-        {
-            const struct tcp_hdr *tcph = (const struct tcp_hdr *)((u8_t *)iph + ihl_bytes);
-            bsp_printf("  TCP src=%u dst=%u",
-                       lwip_htons(tcph->src), lwip_htons(tcph->dest));
+            bsp_printf("[DROP-mDNS] %d.%d.%d.%d:%u → 224.0.0.251:5353\r\n",
+                       ip4_addr1(&iph->src), ip4_addr2(&iph->src),
+                       ip4_addr3(&iph->src), ip4_addr4(&iph->src),
+                       (unsigned)lwip_ntohs(udph->src));
+            pbuf_free(p);
+            return ERR_OK;
         }
     }
 
-    /* 繼續交回 lwIP 標準處理 */
-    return ethernet_input(p, netif);
+    /* 6) 只放行本地端口或目标端口为 5001 的 TCP/UDP，其它丢弃 */
+    u16_t sport = 0, dport = 0;
+    if (proto == PROTO_TCP) {
+        const struct tcp_hdr *tcph = (const struct tcp_hdr *)((u8_t *)iph + ihl);
+        sport = lwip_ntohs(tcph->src);
+        dport = lwip_ntohs(tcph->dest);
+    }
+    else if (proto == PROTO_UDP) {
+        const struct udp_hdr *udph = (const struct udp_hdr *)((u8_t *)iph + ihl);
+        sport = lwip_ntohs(udph->src);
+        dport = lwip_ntohs(udph->dest);
+    }
+    else {
+        bsp_printf("[DROP-NON-TCPUDP] proto=%u\r\n", proto);
+        pbuf_free(p);
+        return ERR_OK;
+    }
+
+    if (sport == 5001 || dport == 5001) {
+        bsp_printf("[PASS-5001] %d.%d.%d.%d:%u → %d.%d.%d.%d:%u proto=%u len=%lu\r\n",
+                   ip4_addr1(&iph->src), ip4_addr2(&iph->src),
+                   ip4_addr3(&iph->src), ip4_addr4(&iph->src), (unsigned)sport,
+                   ip4_addr1(&iph->dest), ip4_addr2(&iph->dest),
+                   ip4_addr3(&iph->dest), ip4_addr4(&iph->dest), (unsigned)dport,
+                   proto, (unsigned long)p->tot_len);
+        return ethernet_input(p, netif);
+    }
+    else {
+        bsp_printf("[DROP-PORT] %d.%d.%d.%d:%u → %d.%d.%d.%d:%u\r\n",
+                   ip4_addr1(&iph->src), ip4_addr2(&iph->src),
+                   ip4_addr3(&iph->src), ip4_addr4(&iph->src), (unsigned)sport,
+                   ip4_addr1(&iph->dest), ip4_addr2(&iph->dest),
+                   ip4_addr3(&iph->dest), ip4_addr4(&iph->dest), (unsigned)dport);
+        pbuf_free(p);
+        return ERR_OK;
+    }
 }
 
-/* ---------- LwIP + 網卡 初始化 ---------- */
+/* ---------- LwIP + 网卡 初始化 ---------- */
 void LwIP_Init(void)
 {
-    IP4_ADDR(&ipaddr,   IP_ADDR0,   IP_ADDR1,   IP_ADDR2,   IP_ADDR3);
+    IP4_ADDR(&ipaddr,   IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
     IP4_ADDR(&netmask,  NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
-    IP4_ADDR(&gw,       GW_ADDR0,   GW_ADDR1,   GW_ADDR2,   GW_ADDR3);
+    IP4_ADDR(&gw,       GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
 
     lwip_init();
-
-    /* 用 sniff_input 取代 ethernet_input */
     netif_add(&gnetif, &ipaddr, &netmask, &gw, NULL,
               ethernetif_init, sniff_input);
     netif_set_default(&gnetif);
-
-    if (netif_is_link_up(&gnetif))
-        netif_set_up(&gnetif);
-    else
-        netif_set_down(&gnetif);
+    if (netif_is_link_up(&gnetif)) netif_set_up(&gnetif);
+    else                           netif_set_down(&gnetif);
 }
 
-/* ---------- 中斷設定 & Handler ---------- */
+/* ---------- 中断 & Handler ---------- */
 void interrupt_init(void)
 {
     plic_set_threshold(BSP_PLIC, BSP_PLIC_CPU_0, 0);
-    plic_set_priority(BSP_PLIC, SYSTEM_PLIC_USER_INTERRUPT_A_INTERRUPT, 1);
-    plic_set_enable(BSP_PLIC, BSP_PLIC_CPU_0, SYSTEM_PLIC_USER_INTERRUPT_A_INTERRUPT, 1);
-    csr_write(mtvec, trap_entry);
-    csr_set(mie, MIE_MEIE);
-    csr_write(mstatus, MSTATUS_MPP | MSTATUS_MIE);
+    plic_set_priority( BSP_PLIC, SYSTEM_PLIC_USER_INTERRUPT_A_INTERRUPT, 1);
+    plic_set_enable(   BSP_PLIC, BSP_PLIC_CPU_0, SYSTEM_PLIC_USER_INTERRUPT_A_INTERRUPT, 1);
+    csr_write(mtvec,    trap_entry);
+    csr_set(  mie,      MIE_MEIE);
+    csr_write(mstatus,  MSTATUS_MPP | MSTATUS_MIE);
 }
 
 void trap(void)
 {
     int32_t mc = csr_read(mcause);
-    if (mc < 0 && (mc & 0xF) == CAUSE_MACHINE_EXTERNAL)
-        userInterrupt();
-    else
-        crash();
+    if (mc < 0 && (mc & 0xF) == CAUSE_MACHINE_EXTERNAL) userInterrupt();
+    else                                                crash();
 }
 
 void userInterrupt(void)
 {
     uint32_t claim;
-    while ((claim = plic_claim(BSP_PLIC, BSP_PLIC_CPU_0)))
-    {
-        if (claim == SYSTEM_PLIC_USER_INTERRUPT_A_INTERRUPT)
+    while ((claim = plic_claim(BSP_PLIC, BSP_PLIC_CPU_0))) {
+        if (claim == SYSTEM_PLIC_USER_INTERRUPT_A_INTERRUPT) {
             flush_data_cache();
-        else
+            ethernetif_input(&gnetif);
+        } else {
             crash();
+        }
         plic_release(BSP_PLIC, BSP_PLIC_CPU_0, claim);
     }
 }
 
 void crash(void)
 {
-    bsp_printf("\n*** CRASH ***\n");
+    bsp_printf("\r\n*** CRASH ***\r\n");
     while (1) { }
 }
 
-/* ---------- PHY & MAC 設定 ---------- */
+/* ---------- PHY & MAC ---------- */
 void clock_sel(int speed)
 {
     int v = (speed == Speed_1000Mhz) ? 0x03 : 0x00;
@@ -183,24 +211,20 @@ void clock_sel(int speed)
 /* ---------- main ---------- */
 int main(void)
 {
-    int speed = Speed_1000Mhz, link_speed = 0;
-    int bLink = 0;
+    int speed = Speed_1000Mhz, link_speed = 0, bLink = 0;
 
-    MacRst(0, 0);
+    MacRst(0,0);
     interrupt_init();
+    dmasg_priority(DMASG_BASE, DMASG_CHANNEL0, 0,0);
+    dmasg_priority(DMASG_BASE, DMASG_CHANNEL1, 0,0);
 
-    dmasg_priority(DMASG_BASE, DMASG_CHANNEL0, 0, 0);
-    dmasg_priority(DMASG_BASE, DMASG_CHANNEL1, 0, 0);
-
-    bsp_printf("Phy Init...");
+    bsp_printf("Phy Init...\r\n");
     rtl8211_drv_init();
-    bsp_printf("Waiting Link Up...");
+    bsp_printf("Waiting Link Up...\r\n");
     speed = rtl8211_drv_linkup();
-
     if      (speed == Speed_1000Mhz) link_speed = 1000;
     else if (speed == Speed_100Mhz)  link_speed = 100;
     else if (speed == Speed_10Mhz)   link_speed = 10;
-
     bLink = 1;
     clock_sel(speed);
     MacNormalInit(speed);
@@ -208,37 +232,25 @@ int main(void)
     LwIP_Init();
     lwiperf_start_tcp_server(&ipaddr, 5001, NULL, NULL);
 
-    bsp_printf("iperf server Up\n\r");
-    bsp_printf("=========================================\n\r");
-    bsp_printf("======Lwip Raw Mode Iperf TCP Server ====\n\r");
-    bsp_printf("=========================================\n\r");
-    bsp_printf("IP:       %d.%d.%d.%d\n\r", IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
-    bsp_printf("Netmask:  %d.%d.%d.%d\n\r", NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
-    bsp_printf("GateWay:  %d.%d.%d.%d\n\r", GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
-    bsp_printf("link Speed: %d Mbps\n\r", link_speed);
-    bsp_printf("=========================================\n\r");
+    bsp_printf("iperf server Up\r\n");
+    bsp_printf("IP: %d.%d.%d.%d   Netmask: %d.%d.%d.%d   GW: %d.%d.%d.%d   Speed: %d Mbps\r\n",
+               IP_ADDR0,IP_ADDR1,IP_ADDR2,IP_ADDR3,
+               NETMASK_ADDR0,NETMASK_ADDR1,NETMASK_ADDR2,NETMASK_ADDR3,
+               GW_ADDR0,GW_ADDR1,GW_ADDR2,GW_ADDR3,
+               link_speed);
 
-    for (;;)
-    {
-        if (check_dma_status(cur_des))
-        {
+    for (;;) {
+        if (check_dma_status(cur_des)) {
             ethernetif_input(&gnetif);
-        }
-        else
-        {
+        } else {
             int st = rtl8211_drv_rddata(26);
-            if (!(st & 0x04) && bLink)
-            {
-                bLink = 0;
-                bsp_printf("Disconnected -- ");
-            }
-            else if ((st & 0x04) && !bLink)
-            {
+            if (!(st & 0x04) && bLink) {
+                bLink=0; bsp_printf("Disconnected\r\n");
+            } else if ((st & 0x04) && !bLink) {
                 speed = rtl8211_drv_linkup();
                 clock_sel(speed);
                 MacNormalInit(speed);
-                bLink = 1;
-                bsp_printf("Connected -- ");
+                bLink=1; bsp_printf("Connected\r\n");
             }
             sys_check_timeouts();
         }
