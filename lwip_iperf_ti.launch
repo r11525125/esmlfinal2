@@ -21,9 +21,9 @@
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerExecutable" value="${eclipse_home}/../openocd/bin/openocd.exe"/>
 <intAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerGdbPortNumber" value="3333"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerLog" value=""/>
-<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerOther" value="-c 'set bsp_loc {C:\Users\tim\Desktop\riscv-tsemac-lwip-v3.1\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0}'&#13;&#10;-f 'C:\Users\tim\Desktop\riscv-tsemac-lwip-v3.1\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/ftdi_ti.cfg'&#13;&#10;-f 'C:\Users\tim\Desktop\riscv-tsemac-lwip-v3.1\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/debug_ti.cfg'&#13;&#10;"/>
-<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.targetRegFile" value="C:\Users\tim\Desktop\riscv-tsemac-lwip-v3.1\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/sapphire_soc_32bit-reg.xml"/>
-<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.svdPath" value="C:\Users\tim\Desktop\riscv-tsemac-lwip-v3.1\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/sapphire_soc_xsvd.json"/>
+<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerOther" value="-c 'set bsp_loc {C:\Users\tim\Downloads\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0}'&#13;&#10;-f 'C:\Users\tim\Downloads\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/ftdi_ti.cfg'&#13;&#10;-f 'C:\Users\tim\Downloads\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/debug_ti.cfg'&#13;&#10;"/>
+<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.targetRegFile" value="C:\Users\tim\Downloads\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/sapphire_soc_32bit-reg.xml"/>
+<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.svdPath" value="C:\Users\tim\Downloads\riscv-tsemac-lwip\bsp\ti60f225_dk\embedded_sw\soc0/bsp/efinix/EfxSapphireSoc/openocd/sapphire_soc_xsvd.json"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerTclPortNumber" value="6666"/>
 <intAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerTelnetPortNumber" value="4444"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherInitCommands" value=""/>

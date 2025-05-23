@@ -1,35 +1,28 @@
-###############################################################################
-# pkt_inspector – Feature-dumper firmware (lwip_final)
-###############################################################################
+PROJ_NAME=lwip_iperf
 
-PROJ_NAME  := lwip_final          # 產出 build/lwip_final.elf
-STANDALONE := ..
+STANDALONE = ..
 
-# ---------------- source list -----------------------------------------------
-SRCS := \
-    src/main.c \
-    src/extract_features.c \
-    src/common.c \
-    src/mac.c \
-    src/rtl8211fd_drv.c \
-    $(STANDALONE)/common/start.S \
-    $(STANDALONE)/common/trap.S
 
-# ---------------- include paths ---------------------------------------------
-CFLAGS += -Isrc/include
+SRCS = 	$(wildcard src/*.c) \
+	$(wildcard src/user/arch/*.c) \
+	$(wildcard src/api/*.c) \
+	$(wildcard src/netif/*.c) \
+	$(wildcard src/netif/ppp/*.c) \
+	$(wildcard src/netif/ppp/polarssl/*.c) \
+	$(wildcard src/core/*.c) \
+	$(wildcard src/core/ipv4/*.c) \
+	$(wildcard src/*.cpp) \
+	$(wildcard src/*.S) \
+        ${STANDALONE}/common/start.S\
+        ${STANDALONE}/common/trap.S
+
+
 CFLAGS += -Isrc
+CFLAGS += -Isrc/include
 CFLAGS += -Isrc/user/arch
-CFLAGS += -I$(STANDALONE)/driver
-CFLAGS += -I$(STANDALONE)/bsp/efnix/EfxSapphireSoc/include
+CFLAGS += -Isrc/user/
 CFLAGS += -DportasmHANDLE_INTERRUPT=external_interrupt_handler
-CFLAGS += -Os -g
 
-# ---------------- BSP / linker / GCC rules ----------------------------------
-include $(STANDALONE)/common/bsp.mk
-include $(STANDALONE)/common/riscv64-unknown-elf.mk
-include $(STANDALONE)/common/standalone.mk
-
-# ---------------- 補一條規則，把 .elf 複製成無副檔名 ------------------------
-build/$(PROJ_NAME): build/$(PROJ_NAME).elf
-	@mkdir -p build
-	@cp  $<  $@
+include ${STANDALONE}/common/bsp.mk
+include ${STANDALONE}/common/riscv64-unknown-elf.mk
+include ${STANDALONE}/common/standalone.mk
