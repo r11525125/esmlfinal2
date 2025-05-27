@@ -48,6 +48,18 @@
 
 #define IPERF_PORT     5001
 
+/* —— ML推斷模式定義 —— */
+typedef enum {
+    ML_MODE_DISABLED = 0,     // 禁用ML推斷
+    ML_MODE_FIN_RST = 1,      // 僅在FIN/RST時推斷
+    ML_MODE_PACKET_COUNT = 2, // 每N包推斷一次
+    ML_MODE_TIMER = 3         // 定時推斷
+} ml_mode_t;
+
+/* —— 配置參數 —— */
+#define ML_PACKET_THRESHOLD  10    // 每1000包觸發一次
+#define ML_TIMER_INTERVAL_MS 1    // 每5秒觸發一次 (可調整)
+
 /* —— Globals —— */
 static ip4_addr_t   ipaddr, netmask, gw;
 static struct netif gnetif;
@@ -61,8 +73,11 @@ static uint32_t flow_dst_pkts  = 0;
 static uint32_t flow_src_bytes = 0;
 static uint16_t last_sport     = 0;
 
-/* —— ML推斷控制 —— */
-static volatile int ml_enabled = 1;  // 可以動態開關ML推斷
+/* —— ML推斷控制變數 —— */
+static volatile ml_mode_t ml_mode = ML_MODE_TIMER;  // 預設為每1000包模式
+static uint32_t ml_packet_counter = 0;        // 包計數器
+static uint32_t ml_last_time = 0;             // 上次推斷時間
+static uint32_t ml_inference_count = 0;       // 推斷次數統計
 
 /* —— External trap entry from trap.S —— */
 extern void trap_entry(void);
@@ -79,7 +94,9 @@ static u8_t icmp_recv_cb(void *arg, struct raw_pcb *pcb,
                          struct pbuf *p, const ip_addr_t *addr);
 static void LwIP_Init(void);
 static void clock_sel(int speed);
-static void do_ml_inference(uint16_t sport);
+static void do_ml_inference(uint16_t sport, const char* trigger_reason);
+static void reset_flow_stats(void);
+static void set_ml_mode(ml_mode_t mode);
 
 /* —— Time base (for lwiperf) —— */
 u32_t sys_jiffies(void) {
@@ -91,9 +108,29 @@ u32_t sys_now(void) {
     return sys_jiffies();
 }
 
-/* ========== ML推斷函數 ========== */
-static void do_ml_inference(uint16_t sport) {
-    if (!ml_enabled) return;
+/* ========== ML推斷相關函數 ========== */
+static void reset_flow_stats(void) {
+    flow_tot_pkts = flow_tot_bytes = 0;
+    flow_src_pkts = flow_dst_pkts = flow_src_bytes = 0;
+}
+
+static void set_ml_mode(ml_mode_t mode) {
+    ml_mode = mode;
+    ml_packet_counter = 0;
+    ml_last_time = sys_now();
+    ml_inference_count = 0;
+
+    const char* mode_names[] = {
+        "Disabled", "FIN/RST Only", "Every 1000 Packets", "Timer Based"
+    };
+    bsp_printf("ML Mode changed to: %s\n\r", mode_names[mode]);
+}
+
+static void do_ml_inference(uint16_t sport, const char* trigger_reason) {
+    if (ml_mode == ML_MODE_DISABLED) return;
+
+    // 確保有足夠的數據進行推斷
+    if (flow_tot_pkts < 10) return;
 
     float feats[6] = {
         (float)sport,
@@ -107,12 +144,14 @@ static void do_ml_inference(uint16_t sport) {
     // 執行ML推斷
     packet_anomaly_detector_predict(feats, 6);
 
-    // 重置統計（為下一個流做準備）
-    flow_tot_pkts = flow_tot_bytes = 0;
-    flow_src_pkts = flow_dst_pkts = flow_src_bytes = 0;
+    ml_inference_count++;
+
+    // 可選：輸出推斷觸發信息（用於調試）
+    // bsp_printf("ML Inference #%lu triggered by: %s (packets: %lu)\n\r",
+    //           ml_inference_count, trigger_reason, flow_tot_pkts);
 }
 
-/* ========== 輕量級封包嗅探函數 ========== */
+/* ========== 多模式封包嗅探函數 ========== */
 static err_t sniff_input(struct pbuf *p, struct netif *netif) {
     // 先做快速檢查，避免不必要的處理
     if (p->tot_len < SIZEOF_ETH_HDR + sizeof(struct ip_hdr)) {
@@ -161,20 +200,21 @@ static err_t sniff_input(struct pbuf *p, struct netif *netif) {
         if (sport == IPERF_PORT || dport == IPERF_PORT) {
             /* 檢測新流（基於source port變化） */
             if (dport == IPERF_PORT && sport != last_sport) {
-                // 如果之前有流在進行，先進行ML推斷
-                if (last_sport != 0 && flow_tot_pkts > 0) {
-                    do_ml_inference(last_sport);
+                // 如果之前有流在進行且模式為FIN/RST，先進行ML推斷
+                if (last_sport != 0 && flow_tot_pkts > 0 && ml_mode == ML_MODE_FIN_RST) {
+                    do_ml_inference(last_sport, "New Flow Start");
                 }
 
                 // 重置統計為新流
-                flow_tot_pkts = flow_tot_bytes = 0;
-                flow_src_pkts = flow_dst_pkts = flow_src_bytes = 0;
+                reset_flow_stats();
+                ml_packet_counter = 0;  // 重置包計數器
                 last_sport = sport;
             }
 
             /* 累加統計 */
             flow_tot_pkts++;
             flow_tot_bytes += p->tot_len;
+            ml_packet_counter++;  // 增加ML包計數器
 
             if (dport == IPERF_PORT) {
                 flow_src_pkts++;
@@ -183,19 +223,58 @@ static err_t sniff_input(struct pbuf *p, struct netif *netif) {
                 flow_dst_pkts++;
             }
 
-            /* 檢查TCP標誌位 */
-            u8_t flags = TCPH_FLAGS(tcph);
+            /* 根據不同模式觸發ML推斷 */
+            switch (ml_mode) {
+                case ML_MODE_FIN_RST: {
+                    /* 模式1: 僅在FIN或RST時執行ML推斷 */
+                    u8_t flags = TCPH_FLAGS(tcph);
+                    if (flags & (TCP_FIN | TCP_RST)) {
+                        do_ml_inference(sport == IPERF_PORT ? sport : dport, "FIN/RST");
+                        last_sport = 0; // 清除當前流標記
+                        reset_flow_stats();
+                    }
+                    break;
+                }
 
-            /* 在FIN或RST時執行ML推斷 */
-            if (flags & (TCP_FIN | TCP_RST)) {
-                do_ml_inference(sport == IPERF_PORT ? sport : dport);
-                last_sport = 0; // 清除當前流標記
+                case ML_MODE_PACKET_COUNT: {
+                    /* 模式2: 每N包執行一次ML推斷 */
+                    if (ml_packet_counter >= ML_PACKET_THRESHOLD) {
+                        do_ml_inference(sport == IPERF_PORT ? sport : dport, "Packet Count");
+                        ml_packet_counter = 0;  // 重置計數器
+                        // 注意：不重置flow_stats，保持累積統計
+                    }
+                    break;
+                }
+
+                case ML_MODE_TIMER:
+                    /* 模式3: 定時觸發（在主循環中處理） */
+                    break;
+
+                case ML_MODE_DISABLED:
+                default:
+                    /* 禁用模式：不做任何處理 */
+                    break;
             }
         }
     }
 
     /* 所有封包都正常通過lwIP處理 */
     return ethernet_input(p, netif);
+}
+
+/* ========== 定時ML推斷檢查 ========== */
+static void check_timer_ml_inference(void) {
+    if (ml_mode != ML_MODE_TIMER) return;
+
+    u32_t current_time = sys_now();
+
+    // 檢查是否到達定時間隔
+    if (current_time - ml_last_time >= ML_TIMER_INTERVAL_MS) {
+        if (flow_tot_pkts > 0) {  // 確保有數據
+            do_ml_inference(last_sport, "Timer");
+        }
+        ml_last_time = current_time;
+    }
 }
 
 /* ========== ICMP echo 回調 ========== */
@@ -311,7 +390,27 @@ static void clock_sel(int speed) {
     write_u32(val, IO_APB_SLAVE_2_APB);
 }
 
-/* ========== main函數 - 保持原有的輪詢邏輯 ========== */
+/* ========== 模式切換函數（可透過串口命令調用） ========== */
+void switch_ml_mode(int mode) {
+    if (mode >= 0 && mode <= 3) {
+        set_ml_mode((ml_mode_t)mode);
+    }
+}
+
+void print_ml_stats(void) {
+    const char* mode_names[] = {
+        "Disabled", "FIN/RST Only", "Every 1000 Packets", "Timer Based"
+    };
+
+    bsp_printf("\n=== ML Inference Statistics ===\n\r");
+    bsp_printf("Current Mode: %s\n\r", mode_names[ml_mode]);
+    bsp_printf("Total Inferences: %lu\n\r", ml_inference_count);
+    bsp_printf("Current Flow Packets: %lu\n\r", flow_tot_pkts);
+    bsp_printf("Packet Counter: %lu\n\r", ml_packet_counter);
+    bsp_printf("===============================\n\r");
+}
+
+/* ========== main函數 ========== */
 int main(void) {
     int speed = Speed_1000Mhz, link_speed = 0;
     int check_connect, bLink = 0;
@@ -342,19 +441,30 @@ int main(void) {
     LwIP_Init();
     lwiperf_start_tcp_server(&ipaddr, IPERF_PORT, NULL, NULL);
 
+    // 初始化ML推斷系統
+    set_ml_mode(ML_MODE_PACKET_COUNT);  // 預設為每1000包模式
+    ml_last_time = sys_now();
+
     bsp_printf("iperf server Up\n\r");
-    bsp_printf("=========================================\n\r");
-    bsp_printf("======Lwip Raw Mode Iperf TCP Server ====\n\r");
-    bsp_printf("======With ML Anomaly Detection==========\n\r");
-    bsp_printf("=========================================\n\r");
+    bsp_printf("==========================================\n\r");
+    bsp_printf("======Lwip Raw Mode Iperf TCP Server=====\n\r");
+    bsp_printf("======With Multi-Mode ML Detection=======\n\r");
+    bsp_printf("==========================================\n\r");
     bsp_printf("======IP: \t\t%d.%d.%d.%d\n\r", IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
     bsp_printf("======Netmask: \t\t%d.%d.%d.%d\n\r", NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
     bsp_printf("======GateWay: \t\t%d.%d.%d.%d\n\r", GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
     bsp_printf("======Link Speed: \t%d Mbps\n\r", link_speed);
-    bsp_printf("======ML Detection: \t%s\n\r", ml_enabled ? "Enabled" : "Disabled");
-    bsp_printf("=========================================\n\r");
+    bsp_printf("======ML Packet Threshold: %d packets\n\r", ML_PACKET_THRESHOLD);
+    bsp_printf("======ML Timer Interval: %d ms\n\r", ML_TIMER_INTERVAL_MS);
+    bsp_printf("==========================================\n\r");
+    bsp_printf("Available ML Modes:\n\r");
+    bsp_printf("  0: Disabled\n\r");
+    bsp_printf("  1: FIN/RST Only\n\r");
+    bsp_printf("  2: Every %d Packets (Current)\n\r", ML_PACKET_THRESHOLD);
+    bsp_printf("  3: Timer Based (%d ms)\n\r", ML_TIMER_INTERVAL_MS);
+    bsp_printf("==========================================\n\r");
 
-    // 主循環 - 保持原有邏輯
+    // 主循環 - 保持原有邏輯，加入定時ML檢查
     for (;;) {
         // 檢查DMA狀態，有封包就處理
         if (check_dma_status(cur_des)) {
@@ -378,6 +488,9 @@ int main(void) {
 
             // 處理lwIP定時器
             sys_check_timeouts();
+
+            // 檢查定時ML推斷
+            check_timer_ml_inference();
         }
     }
 
