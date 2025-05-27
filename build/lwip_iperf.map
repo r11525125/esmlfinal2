@@ -36,6 +36,8 @@ c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.
                               c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-malloc.o) (_impure_ptr)
 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-reent.o)
                               c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-sbrkr.o) (errno)
+c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_udivdi3.o)
+                              build/obj_files/main.o (__udivdi3)
 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
                               build/obj_files/main.o (__addsf3)
 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
@@ -48,10 +50,10 @@ c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.
                               build/obj_files/main.o (__subsf3)
 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
                               build/obj_files/main.o (__floatunsisf)
+c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
+                              c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_udivdi3.o) (__clz_tab)
 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
                               c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o) (__clzsi2)
-c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
-                              c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o) (__clz_tab)
 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
                               c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-sbrkr.o) (_sbrk)
 
@@ -11963,7 +11965,7 @@ LOAD c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-emb
                 0x0000000000001000                _start
                 0x0000000000001064                _init
 
-.text           0x0000000000001068    0x1b410
+.text           0x0000000000001068    0x1b95c
  *(.text.Proc_1)
  *(.text.Proc_2)
  *(.text.Proc_3)
@@ -12057,457 +12059,464 @@ LOAD c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-emb
  *(.text.unlikely .text.unlikely.*)
  *(.text.startup .text.startup.*)
  *(.text .text.*)
- .text          0x00000000000026a8      0xf64 build/obj_files/main.o
+ .text          0x00000000000026a8     0x1010 build/obj_files/main.o
                 0x0000000000002d44                eml_mahalanobis_distance_squared
                 0x0000000000002e54                eml_elliptic_envelope_predict
                 0x0000000000002ee4                packet_anomaly_detector_predict
-                0x000000000000330c                sys_jiffies
-                0x000000000000333c                sys_now
-                0x0000000000003354                interrupt_init
-                0x00000000000033c0                crash
-                0x00000000000033d8                userInterrupt
-                0x0000000000003438                trap
-                0x0000000000003468                main
- .text          0x000000000000360c      0x7d4 build/obj_files/mac.o
-                0x00000000000039cc                control_reset
-                0x00000000000039dc                MacTxEn
-                0x0000000000003a24                MacRxEn
-                0x0000000000003a70                MacSpeedSet
-                0x0000000000003ac8                MacLoopbackSet
-                0x0000000000003b24                MacIpgSet
-                0x0000000000003b48                MacAddrSet
-                0x0000000000003be8                Pause_XOn
-                0x0000000000003c34                MacCntClean
-                0x0000000000003c9c                CntMonitor
-                0x0000000000003d20                MacRst
-                0x0000000000003dac                MacNormalInit
- .text          0x0000000000003de0      0x690 build/obj_files/rtl8211fd_drv.o
-                0x00000000000041a0                Phy_Rd
-                0x00000000000041f4                Phy_Wr
-                0x0000000000004244                rtl8211_drv_rddata
-                0x000000000000425c                rtl8211_drv_wrdata
-                0x0000000000004288                rtl8211_drv_setpage
-                0x00000000000042c0                rtl8211_drv_linkup
-                0x00000000000043c4                rtl8211_drv_init
- .text          0x0000000000004470     0x12b4 build/obj_files/lwiperf.o
-                0x00000000000054a4                lwiperf_start_tcp_server
-                0x00000000000054d8                lwiperf_start_tcp_server_default
-                0x0000000000005504                lwiperf_abort
-                0x0000000000005570                lwiperf_start_tcp_client
-                0x00000000000056f8                lwiperf_start_tcp_client_default
- .text          0x0000000000005724       0x10 build/obj_files/common.o
-                0x0000000000005724                Reg_Out32
-                0x000000000000572c                Reg_In32
- .text          0x0000000000005734      0x8b4 build/obj_files/ethernetif.o
-                0x0000000000005d74                flush_data_cache
-                0x0000000000005d7c                program_descriptor
-                0x0000000000005edc                check_dma_status
-                0x0000000000005f10                ethernetif_input
-                0x0000000000005f60                ethernetif_init
- .text          0x0000000000005fe8        0x0 build/obj_files/sockets.o
- .text          0x0000000000005fe8        0x0 build/obj_files/api_msg.o
- .text          0x0000000000005fe8        0x0 build/obj_files/err.o
- .text          0x0000000000005fe8        0x0 build/obj_files/if_api.o
- .text          0x0000000000005fe8        0x0 build/obj_files/netbuf.o
- .text          0x0000000000005fe8        0x0 build/obj_files/tcpip.o
- .text          0x0000000000005fe8        0x0 build/obj_files/netifapi.o
- .text          0x0000000000005fe8        0x0 build/obj_files/api_lib.o
- .text          0x0000000000005fe8        0x0 build/obj_files/netdb.o
- .text          0x0000000000005fe8        0x0 build/obj_files/bridgeif.o
- .text          0x0000000000005fe8        0x0 build/obj_files/lowpan6_common.o
- .text          0x0000000000005fe8        0x0 build/obj_files/lowpan6_ble.o
- .text          0x0000000000005fe8        0x0 build/obj_files/lowpan6.o
- .text          0x0000000000005fe8        0x0 build/obj_files/zepif.o
- .text          0x0000000000005fe8      0x668 build/obj_files/bridgeif_fdb.o
-                0x000000000000640c                bridgeif_fdb_update_src
-                0x0000000000006528                bridgeif_fdb_get_dst_ports
-                0x00000000000065c0                bridgeif_fdb_init
- .text          0x0000000000006650      0x644 build/obj_files/ethernet.o
-                0x00000000000069dc                ethernet_input
-                0x0000000000006b74                ethernet_output
- .text          0x0000000000006c94        0x0 build/obj_files/fsm.o
- .text          0x0000000000006c94        0x0 build/obj_files/upap.o
- .text          0x0000000000006c94        0x0 build/obj_files/demand.o
- .text          0x0000000000006c94        0x0 build/obj_files/eui64.o
- .text          0x0000000000006c94        0x0 build/obj_files/lcp.o
- .text          0x0000000000006c94        0x0 build/obj_files/ipcp.o
- .text          0x0000000000006c94        0x0 build/obj_files/pppos.o
- .text          0x0000000000006c94        0x0 build/obj_files/mppe.o
- .text          0x0000000000006c94        0x0 build/obj_files/multilink.o
- .text          0x0000000000006c94        0x0 build/obj_files/pppcrypt.o
- .text          0x0000000000006c94        0x0 build/obj_files/pppoe.o
- .text          0x0000000000006c94        0x0 build/obj_files/utils.o
- .text          0x0000000000006c94        0x0 build/obj_files/auth.o
- .text          0x0000000000006c94        0x0 build/obj_files/chap-new.o
- .text          0x0000000000006c94        0x0 build/obj_files/ccp.o
- .text          0x0000000000006c94        0x0 build/obj_files/ipv6cp.o
- .text          0x0000000000006c94        0x0 build/obj_files/vj.o
- .text          0x0000000000006c94        0x0 build/obj_files/chap-md5.o
- .text          0x0000000000006c94        0x0 build/obj_files/ecp.o
- .text          0x0000000000006c94        0x0 build/obj_files/ppp.o
- .text          0x0000000000006c94        0x0 build/obj_files/chap_ms.o
- .text          0x0000000000006c94        0x0 build/obj_files/pppapi.o
- .text          0x0000000000006c94        0x0 build/obj_files/magic.o
- .text          0x0000000000006c94        0x0 build/obj_files/pppol2tp.o
- .text          0x0000000000006c94        0x0 build/obj_files/eap.o
- .text          0x0000000000006c94        0x0 build/obj_files/arc4.o
- .text          0x0000000000006c94        0x0 build/obj_files/md5.o
- .text          0x0000000000006c94        0x0 build/obj_files/md4.o
- .text          0x0000000000006c94        0x0 build/obj_files/sha1.o
- .text          0x0000000000006c94        0x0 build/obj_files/des.o
- .text          0x0000000000006c94     0x27e8 build/obj_files/tcp_out.o
-                0x0000000000007a6c                tcp_write
-                0x00000000000081bc                tcp_split_unsent_seg
-                0x00000000000084b4                tcp_enqueue_flags
-                0x00000000000086b4                tcp_send_fin
-                0x0000000000008788                tcp_rexmit_rto_prepare
-                0x00000000000088bc                tcp_rexmit
-                0x00000000000089ec                tcp_rexmit_fast
-                0x0000000000008a9c                tcp_rst
-                0x0000000000008b8c                tcp_send_empty_ack
-                0x0000000000008c48                tcp_output
-                0x000000000000915c                tcp_rexmit_rto_commit
-                0x00000000000091ac                tcp_rexmit_rto
-                0x00000000000091f8                tcp_keepalive
-                0x000000000000928c                tcp_zero_window_probe
- .text          0x000000000000947c        0x0 build/obj_files/udp.o
- .text          0x000000000000947c      0xffc build/obj_files/altcp_tcp.o
-                0x000000000000a3b4                altcp_tcp_new_ip_type
-                0x000000000000a410                altcp_tcp_alloc
-                0x000000000000a42c                altcp_tcp_wrap
- .text          0x000000000000a478      0x278 build/obj_files/def.o
-                0x000000000000a478                lwip_htons
-                0x000000000000a490                lwip_htonl
-                0x000000000000a4c4                lwip_strnstr
-                0x000000000000a574                lwip_stricmp
-                0x000000000000a5cc                lwip_strnicmp
-                0x000000000000a634                lwip_itoa
- .text          0x000000000000a6f0      0x940 build/obj_files/altcp.o
-                0x000000000000a6f0                altcp_alloc
-                0x000000000000a72c                altcp_free
-                0x000000000000a774                altcp_new_ip_type
-                0x000000000000a7b0                altcp_new_ip6
-                0x000000000000a7cc                altcp_new
-                0x000000000000a7e8                altcp_arg
-                0x000000000000a7f4                altcp_accept
-                0x000000000000a800                altcp_recv
-                0x000000000000a80c                altcp_sent
-                0x000000000000a818                altcp_poll
-                0x000000000000a854                altcp_err
-                0x000000000000a860                altcp_recved
-                0x000000000000a890                altcp_bind
-                0x000000000000a8d4                altcp_connect
-                0x000000000000a918                altcp_listen_with_backlog_and_err
-                0x000000000000a95c                altcp_abort
-                0x000000000000a98c                altcp_close
-                0x000000000000a9d0                altcp_shutdown
-                0x000000000000aa14                altcp_write
-                0x000000000000aa58                altcp_output
-                0x000000000000aa9c                altcp_mss
-                0x000000000000aae0                altcp_sndbuf
-                0x000000000000ab24                altcp_sndqueuelen
-                0x000000000000ab68                altcp_nagle_disable
-                0x000000000000ab98                altcp_nagle_enable
-                0x000000000000abc8                altcp_nagle_disabled
-                0x000000000000ac0c                altcp_setprio
-                0x000000000000ac3c                altcp_get_tcp_addrinfo
-                0x000000000000ac80                altcp_get_ip
-                0x000000000000acc4                altcp_get_port
-                0x000000000000ad08                altcp_default_set_poll
-                0x000000000000ad3c                altcp_default_recved
-                0x000000000000ad64                altcp_default_bind
-                0x000000000000ad98                altcp_default_shutdown
-                0x000000000000adec                altcp_default_write
-                0x000000000000ae20                altcp_default_output
-                0x000000000000ae54                altcp_default_mss
-                0x000000000000ae88                altcp_default_sndbuf
-                0x000000000000aebc                altcp_default_sndqueuelen
-                0x000000000000aef0                altcp_default_nagle_disable
-                0x000000000000af18                altcp_default_nagle_enable
-                0x000000000000af40                altcp_default_nagle_disabled
-                0x000000000000af74                altcp_default_setprio
-                0x000000000000af9c                altcp_default_dealloc
-                0x000000000000afa0                altcp_default_get_tcp_addrinfo
-                0x000000000000afd4                altcp_default_get_ip
-                0x000000000000affc                altcp_default_get_port
- .text          0x000000000000b030        0x4 build/obj_files/stats.o
-                0x000000000000b030                stats_init
- .text          0x000000000000b034     0x13d0 build/obj_files/netif.o
-                0x000000000000b6a4                netif_input
-                0x000000000000b720                netif_set_default
-                0x000000000000b72c                netif_set_status_callback
-                0x000000000000b738                netif_set_link_callback
-                0x000000000000b744                netif_loop_output
-                0x000000000000b8f0                netif_poll
-                0x000000000000ba10                netif_poll_all
-                0x000000000000ba48                netif_get_by_index
-                0x000000000000ba7c                netif_index_to_name
-                0x000000000000bad4                netif_find
-                0x000000000000bb54                netif_name_to_index
-                0x000000000000bb84                netif_add_ext_callback
-                0x000000000000bbe8                netif_remove_ext_callback
-                0x000000000000bc74                netif_invoke_ext_callback
-                0x000000000000bcec                netif_set_ipaddr
-                0x000000000000bd4c                netif_set_netmask
-                0x000000000000bdac                netif_set_gw
-                0x000000000000be0c                netif_set_addr
-                0x000000000000bf4c                netif_add
-                0x000000000000c0f4                netif_add_noaddr
-                0x000000000000c124                netif_set_up
-                0x000000000000c190                netif_set_down
-                0x000000000000c204                netif_remove
-                0x000000000000c2d0                netif_set_link_up
-                0x000000000000c33c                netif_init
-                0x000000000000c3a8                netif_set_link_down
- .text          0x000000000000c404     0x16e4 build/obj_files/pbuf.o
-                0x000000000000c8d8                pbuf_free_ooseq
-                0x000000000000c918                pbuf_alloc_reference
-                0x000000000000c9a4                pbuf_alloced_custom
-                0x000000000000ca14                pbuf_add_header
-                0x000000000000ca30                pbuf_add_header_force
-                0x000000000000ca4c                pbuf_remove_header
-                0x000000000000cb18                pbuf_header
-                0x000000000000cb34                pbuf_header_force
-                0x000000000000cb50                pbuf_free
-                0x000000000000cc68                pbuf_alloc
-                0x000000000000cec4                pbuf_realloc
-                0x000000000000cfc4                pbuf_free_header
-                0x000000000000d03c                pbuf_clen
-                0x000000000000d060                pbuf_ref
-                0x000000000000d09c                pbuf_cat
-                0x000000000000d138                pbuf_chain
-                0x000000000000d164                pbuf_dechain
-                0x000000000000d21c                pbuf_copy_partial_pbuf
-                0x000000000000d3d8                pbuf_copy
-                0x000000000000d404                pbuf_copy_partial
-                0x000000000000d4dc                pbuf_get_contiguous
-                0x000000000000d570                pbuf_skip
-                0x000000000000d588                pbuf_take
-                0x000000000000d66c                pbuf_take_at
-                0x000000000000d750                pbuf_clone
-                0x000000000000d7ac                pbuf_coalesce
-                0x000000000000d804                pbuf_try_get_at
-                0x000000000000d84c                pbuf_get_at
-                0x000000000000d874                pbuf_put_at
-                0x000000000000d8b8                pbuf_memcmp
-                0x000000000000d9a4                pbuf_memfind
-                0x000000000000da50                pbuf_strstr
- .text          0x000000000000dae8     0x2d40 build/obj_files/tcp_in.o
-                0x000000000000fe7c                tcp_input
-                0x0000000000010818                tcp_trigger_input_pcb_close
- .text          0x0000000000010828      0x9b0 build/obj_files/raw.o
-                0x0000000000010c44                raw_input
-                0x0000000000010d6c                raw_bind
-                0x0000000000010d94                raw_bind_netif
-                0x0000000000010db0                raw_connect
-                0x0000000000010de4                raw_disconnect
-                0x0000000000010dfc                raw_recv
-                0x0000000000010e08                raw_sendto_if_src
-                0x0000000000010fd8                raw_sendto
-                0x00000000000110a0                raw_send
-                0x00000000000110bc                raw_remove
-                0x0000000000011114                raw_new
-                0x0000000000011178                raw_new_ip_type
-                0x0000000000011194                raw_netif_ip_addr_changed
- .text          0x00000000000111d8        0x0 build/obj_files/ip.o
- .text          0x00000000000111d8        0x0 build/obj_files/dns.o
- .text          0x00000000000111d8        0x0 build/obj_files/altcp_alloc.o
- .text          0x00000000000111d8      0x7a4 build/obj_files/timeouts.o
-                0x0000000000011684                sys_timeout
-                0x00000000000116e8                tcp_timer_needed
-                0x0000000000011788                sys_timeouts_init
-                0x00000000000117dc                sys_untimeout
-                0x0000000000011848                sys_check_timeouts
-                0x00000000000118d8                sys_restart_timeouts
-                0x0000000000011920                sys_timeouts_sleeptime
- .text          0x000000000001197c     0x25b0 build/obj_files/tcp.o
-                0x0000000000011ed4                tcp_init
-                0x0000000000011f0c                tcp_free
-                0x0000000000011f54                tcp_backlog_delayed
-                0x0000000000011fd0                tcp_backlog_accepted
-                0x000000000001218c                tcp_bind
-                0x00000000000122a8                tcp_bind_netif
-                0x00000000000122c4                tcp_listen_with_backlog_and_err
-                0x0000000000012444                tcp_listen_with_backlog
-                0x0000000000012460                tcp_update_rcv_ann_wnd
-                0x000000000001251c                tcp_recved
-                0x00000000000125cc                tcp_txnow
-                0x0000000000012614                tcp_seg_free
-                0x0000000000012654                tcp_segs_free
-                0x0000000000012688                tcp_setprio
-                0x0000000000012694                tcp_seg_copy
-                0x00000000000126f8                tcp_arg
-                0x0000000000012704                tcp_recv
-                0x0000000000012758                tcp_sent
-                0x00000000000127ac                tcp_err
-                0x0000000000012800                tcp_accept
-                0x000000000001281c                tcp_poll
-                0x0000000000012880                tcp_next_iss
-                0x00000000000128bc                tcp_eff_send_mss_netif
-                0x000000000001293c                tcp_connect
-                0x0000000000012afc                tcp_debug_state_str
-                0x0000000000012b14                tcp_tcp_get_tcp_addrinfo
-                0x0000000000012b60                tcp_free_ooseq
-                0x0000000000012b98                tcp_pcb_purge
-                0x0000000000012c20                tcp_pcb_remove
-                0x0000000000012d34                tcp_abandon
-                0x0000000000012ecc                tcp_abort
-                0x000000000001308c                tcp_netif_ip_addr_changed
-                0x00000000000131a8                tcp_alloc
-                0x0000000000013344                tcp_new
-                0x0000000000013360                tcp_new_ip_type
-                0x0000000000013568                tcp_close
-                0x00000000000135a8                tcp_recv_null
-                0x0000000000013604                tcp_process_refused_data
-                0x00000000000136f4                tcp_fasttmr
-                0x00000000000137c8                tcp_shutdown
-                0x0000000000013894                tcp_slowtmr
-                0x0000000000013ef4                tcp_tmr
- .text          0x0000000000013f2c        0x0 build/obj_files/sys.o
- .text          0x0000000000013f2c      0x5ec build/obj_files/memp.o
-                0x00000000000143b0                memp_init_pool
-                0x00000000000143b4                memp_init
-                0x0000000000014404                memp_malloc_pool
-                0x000000000001444c                memp_malloc
-                0x0000000000014488                memp_free_pool
-                0x00000000000144dc                memp_free
- .text          0x0000000000014518       0x30 build/obj_files/init.o
-                0x0000000000014518                lwip_init
- .text          0x0000000000014548      0x864 build/obj_files/inet_chksum.o
-                0x00000000000148d4                lwip_standard_chksum
-                0x0000000000014be0                inet_chksum_pseudo
-                0x0000000000014c3c                ip_chksum_pseudo
-                0x0000000000014c54                inet_chksum_pseudo_partial
-                0x0000000000014cb0                ip_chksum_pseudo_partial
-                0x0000000000014cc8                inet_chksum
-                0x0000000000014cec                inet_chksum_pbuf
- .text          0x0000000000014dac      0xc98 build/obj_files/mem.o
-                0x0000000000015338                mem_init
-                0x00000000000153ac                mem_free
-                0x00000000000154f0                mem_trim
-                0x0000000000015774                mem_malloc
-                0x00000000000159ec                mem_calloc
- .text          0x0000000000015a44      0x89c build/obj_files/icmp.o
-                0x0000000000015f44                icmp_input
-                0x00000000000162a0                icmp_dest_unreach
-                0x00000000000162c0                icmp_time_exceeded
- .text          0x00000000000162e0        0x0 build/obj_files/autoip.o
- .text          0x00000000000162e0      0xeb4 build/obj_files/ip4.o
-                0x00000000000166d8                ip4_set_default_multicast_netif
-                0x00000000000166e0                ip4_route
-                0x00000000000167b0                ip4_input
-                0x0000000000016c24                ip4_output_if_opt_src
-                0x0000000000017060                ip4_output_if_opt
-                0x0000000000017094                ip4_output_if
-                0x00000000000170b4                ip4_output_if_src
-                0x00000000000170d4                ip4_output
- .text          0x0000000000017194      0xf00 build/obj_files/igmp.o
-                0x000000000001781c                igmp_init
-                0x0000000000017838                igmp_stop
-                0x00000000000178ac                igmp_report_groups
-                0x00000000000178ec                igmp_lookfor_group
-                0x00000000000179e8                igmp_start
-                0x0000000000017a4c                igmp_input
-                0x0000000000017cd0                igmp_joingroup_netif
-                0x0000000000017dc4                igmp_joingroup
-                0x0000000000017e6c                igmp_leavegroup_netif
-                0x0000000000017f6c                igmp_leavegroup
-                0x0000000000018020                igmp_tmr
- .text          0x0000000000018094      0x7f8 build/obj_files/ip4_addr.o
-                0x0000000000018420                ip4_addr_isbroadcast_u32
-                0x0000000000018480                ip4_addr_netmask_valid
-                0x00000000000184d0                ip4addr_aton
-                0x0000000000018768                ipaddr_addr
-                0x0000000000018794                ip4addr_ntoa_r
-                0x000000000001886c                ip4addr_ntoa
- .text          0x000000000001888c     0x16fc build/obj_files/etharp.o
-                0x0000000000019388                etharp_cleanup_netif
-                0x00000000000193fc                etharp_find_addr
-                0x00000000000194b4                etharp_get_entry
-                0x00000000000195a0                etharp_input
-                0x0000000000019768                etharp_request
-                0x0000000000019784                etharp_tmr
-                0x00000000000199e4                etharp_query
-                0x0000000000019d74                etharp_output
- .text          0x0000000000019f88        0x0 build/obj_files/dhcp.o
- .text          0x0000000000019f88     0x1480 build/obj_files/ip4_frag.o
-                0x000000000001abd4                ip_reass_tmr
-                0x000000000001ac34                ip4_reass
-                0x000000000001b09c                ip4_frag
- .text          0x000000000001b408        0x0 build/obj_files/start.o
- .text          0x000000000001b408       0x90 build/obj_files/trap.o
-                0x000000000001b408                trap_entry
- .text          0x000000000001b498        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
+                0x00000000000033b8                sys_jiffies
+                0x00000000000033e8                sys_now
+                0x0000000000003400                interrupt_init
+                0x000000000000346c                crash
+                0x0000000000003484                userInterrupt
+                0x00000000000034e4                trap
+                0x0000000000003514                main
+ .text          0x00000000000036b8      0x7d4 build/obj_files/mac.o
+                0x0000000000003a78                control_reset
+                0x0000000000003a88                MacTxEn
+                0x0000000000003ad0                MacRxEn
+                0x0000000000003b1c                MacSpeedSet
+                0x0000000000003b74                MacLoopbackSet
+                0x0000000000003bd0                MacIpgSet
+                0x0000000000003bf4                MacAddrSet
+                0x0000000000003c94                Pause_XOn
+                0x0000000000003ce0                MacCntClean
+                0x0000000000003d48                CntMonitor
+                0x0000000000003dcc                MacRst
+                0x0000000000003e58                MacNormalInit
+ .text          0x0000000000003e8c      0x690 build/obj_files/rtl8211fd_drv.o
+                0x000000000000424c                Phy_Rd
+                0x00000000000042a0                Phy_Wr
+                0x00000000000042f0                rtl8211_drv_rddata
+                0x0000000000004308                rtl8211_drv_wrdata
+                0x0000000000004334                rtl8211_drv_setpage
+                0x000000000000436c                rtl8211_drv_linkup
+                0x0000000000004470                rtl8211_drv_init
+ .text          0x000000000000451c     0x12b4 build/obj_files/lwiperf.o
+                0x0000000000005550                lwiperf_start_tcp_server
+                0x0000000000005584                lwiperf_start_tcp_server_default
+                0x00000000000055b0                lwiperf_abort
+                0x000000000000561c                lwiperf_start_tcp_client
+                0x00000000000057a4                lwiperf_start_tcp_client_default
+ .text          0x00000000000057d0       0x10 build/obj_files/common.o
+                0x00000000000057d0                Reg_Out32
+                0x00000000000057d8                Reg_In32
+ .text          0x00000000000057e0      0x8b4 build/obj_files/ethernetif.o
+                0x0000000000005e20                flush_data_cache
+                0x0000000000005e28                program_descriptor
+                0x0000000000005f88                check_dma_status
+                0x0000000000005fbc                ethernetif_input
+                0x000000000000600c                ethernetif_init
+ .text          0x0000000000006094        0x0 build/obj_files/sockets.o
+ .text          0x0000000000006094        0x0 build/obj_files/api_msg.o
+ .text          0x0000000000006094        0x0 build/obj_files/err.o
+ .text          0x0000000000006094        0x0 build/obj_files/if_api.o
+ .text          0x0000000000006094        0x0 build/obj_files/netbuf.o
+ .text          0x0000000000006094        0x0 build/obj_files/tcpip.o
+ .text          0x0000000000006094        0x0 build/obj_files/netifapi.o
+ .text          0x0000000000006094        0x0 build/obj_files/api_lib.o
+ .text          0x0000000000006094        0x0 build/obj_files/netdb.o
+ .text          0x0000000000006094        0x0 build/obj_files/bridgeif.o
+ .text          0x0000000000006094        0x0 build/obj_files/lowpan6_common.o
+ .text          0x0000000000006094        0x0 build/obj_files/lowpan6_ble.o
+ .text          0x0000000000006094        0x0 build/obj_files/lowpan6.o
+ .text          0x0000000000006094        0x0 build/obj_files/zepif.o
+ .text          0x0000000000006094      0x668 build/obj_files/bridgeif_fdb.o
+                0x00000000000064b8                bridgeif_fdb_update_src
+                0x00000000000065d4                bridgeif_fdb_get_dst_ports
+                0x000000000000666c                bridgeif_fdb_init
+ .text          0x00000000000066fc      0x644 build/obj_files/ethernet.o
+                0x0000000000006a88                ethernet_input
+                0x0000000000006c20                ethernet_output
+ .text          0x0000000000006d40        0x0 build/obj_files/fsm.o
+ .text          0x0000000000006d40        0x0 build/obj_files/upap.o
+ .text          0x0000000000006d40        0x0 build/obj_files/demand.o
+ .text          0x0000000000006d40        0x0 build/obj_files/eui64.o
+ .text          0x0000000000006d40        0x0 build/obj_files/lcp.o
+ .text          0x0000000000006d40        0x0 build/obj_files/ipcp.o
+ .text          0x0000000000006d40        0x0 build/obj_files/pppos.o
+ .text          0x0000000000006d40        0x0 build/obj_files/mppe.o
+ .text          0x0000000000006d40        0x0 build/obj_files/multilink.o
+ .text          0x0000000000006d40        0x0 build/obj_files/pppcrypt.o
+ .text          0x0000000000006d40        0x0 build/obj_files/pppoe.o
+ .text          0x0000000000006d40        0x0 build/obj_files/utils.o
+ .text          0x0000000000006d40        0x0 build/obj_files/auth.o
+ .text          0x0000000000006d40        0x0 build/obj_files/chap-new.o
+ .text          0x0000000000006d40        0x0 build/obj_files/ccp.o
+ .text          0x0000000000006d40        0x0 build/obj_files/ipv6cp.o
+ .text          0x0000000000006d40        0x0 build/obj_files/vj.o
+ .text          0x0000000000006d40        0x0 build/obj_files/chap-md5.o
+ .text          0x0000000000006d40        0x0 build/obj_files/ecp.o
+ .text          0x0000000000006d40        0x0 build/obj_files/ppp.o
+ .text          0x0000000000006d40        0x0 build/obj_files/chap_ms.o
+ .text          0x0000000000006d40        0x0 build/obj_files/pppapi.o
+ .text          0x0000000000006d40        0x0 build/obj_files/magic.o
+ .text          0x0000000000006d40        0x0 build/obj_files/pppol2tp.o
+ .text          0x0000000000006d40        0x0 build/obj_files/eap.o
+ .text          0x0000000000006d40        0x0 build/obj_files/arc4.o
+ .text          0x0000000000006d40        0x0 build/obj_files/md5.o
+ .text          0x0000000000006d40        0x0 build/obj_files/md4.o
+ .text          0x0000000000006d40        0x0 build/obj_files/sha1.o
+ .text          0x0000000000006d40        0x0 build/obj_files/des.o
+ .text          0x0000000000006d40     0x27e8 build/obj_files/tcp_out.o
+                0x0000000000007b18                tcp_write
+                0x0000000000008268                tcp_split_unsent_seg
+                0x0000000000008560                tcp_enqueue_flags
+                0x0000000000008760                tcp_send_fin
+                0x0000000000008834                tcp_rexmit_rto_prepare
+                0x0000000000008968                tcp_rexmit
+                0x0000000000008a98                tcp_rexmit_fast
+                0x0000000000008b48                tcp_rst
+                0x0000000000008c38                tcp_send_empty_ack
+                0x0000000000008cf4                tcp_output
+                0x0000000000009208                tcp_rexmit_rto_commit
+                0x0000000000009258                tcp_rexmit_rto
+                0x00000000000092a4                tcp_keepalive
+                0x0000000000009338                tcp_zero_window_probe
+ .text          0x0000000000009528        0x0 build/obj_files/udp.o
+ .text          0x0000000000009528      0xffc build/obj_files/altcp_tcp.o
+                0x000000000000a460                altcp_tcp_new_ip_type
+                0x000000000000a4bc                altcp_tcp_alloc
+                0x000000000000a4d8                altcp_tcp_wrap
+ .text          0x000000000000a524      0x278 build/obj_files/def.o
+                0x000000000000a524                lwip_htons
+                0x000000000000a53c                lwip_htonl
+                0x000000000000a570                lwip_strnstr
+                0x000000000000a620                lwip_stricmp
+                0x000000000000a678                lwip_strnicmp
+                0x000000000000a6e0                lwip_itoa
+ .text          0x000000000000a79c      0x940 build/obj_files/altcp.o
+                0x000000000000a79c                altcp_alloc
+                0x000000000000a7d8                altcp_free
+                0x000000000000a820                altcp_new_ip_type
+                0x000000000000a85c                altcp_new_ip6
+                0x000000000000a878                altcp_new
+                0x000000000000a894                altcp_arg
+                0x000000000000a8a0                altcp_accept
+                0x000000000000a8ac                altcp_recv
+                0x000000000000a8b8                altcp_sent
+                0x000000000000a8c4                altcp_poll
+                0x000000000000a900                altcp_err
+                0x000000000000a90c                altcp_recved
+                0x000000000000a93c                altcp_bind
+                0x000000000000a980                altcp_connect
+                0x000000000000a9c4                altcp_listen_with_backlog_and_err
+                0x000000000000aa08                altcp_abort
+                0x000000000000aa38                altcp_close
+                0x000000000000aa7c                altcp_shutdown
+                0x000000000000aac0                altcp_write
+                0x000000000000ab04                altcp_output
+                0x000000000000ab48                altcp_mss
+                0x000000000000ab8c                altcp_sndbuf
+                0x000000000000abd0                altcp_sndqueuelen
+                0x000000000000ac14                altcp_nagle_disable
+                0x000000000000ac44                altcp_nagle_enable
+                0x000000000000ac74                altcp_nagle_disabled
+                0x000000000000acb8                altcp_setprio
+                0x000000000000ace8                altcp_get_tcp_addrinfo
+                0x000000000000ad2c                altcp_get_ip
+                0x000000000000ad70                altcp_get_port
+                0x000000000000adb4                altcp_default_set_poll
+                0x000000000000ade8                altcp_default_recved
+                0x000000000000ae10                altcp_default_bind
+                0x000000000000ae44                altcp_default_shutdown
+                0x000000000000ae98                altcp_default_write
+                0x000000000000aecc                altcp_default_output
+                0x000000000000af00                altcp_default_mss
+                0x000000000000af34                altcp_default_sndbuf
+                0x000000000000af68                altcp_default_sndqueuelen
+                0x000000000000af9c                altcp_default_nagle_disable
+                0x000000000000afc4                altcp_default_nagle_enable
+                0x000000000000afec                altcp_default_nagle_disabled
+                0x000000000000b020                altcp_default_setprio
+                0x000000000000b048                altcp_default_dealloc
+                0x000000000000b04c                altcp_default_get_tcp_addrinfo
+                0x000000000000b080                altcp_default_get_ip
+                0x000000000000b0a8                altcp_default_get_port
+ .text          0x000000000000b0dc        0x4 build/obj_files/stats.o
+                0x000000000000b0dc                stats_init
+ .text          0x000000000000b0e0     0x13d0 build/obj_files/netif.o
+                0x000000000000b750                netif_input
+                0x000000000000b7cc                netif_set_default
+                0x000000000000b7d8                netif_set_status_callback
+                0x000000000000b7e4                netif_set_link_callback
+                0x000000000000b7f0                netif_loop_output
+                0x000000000000b99c                netif_poll
+                0x000000000000babc                netif_poll_all
+                0x000000000000baf4                netif_get_by_index
+                0x000000000000bb28                netif_index_to_name
+                0x000000000000bb80                netif_find
+                0x000000000000bc00                netif_name_to_index
+                0x000000000000bc30                netif_add_ext_callback
+                0x000000000000bc94                netif_remove_ext_callback
+                0x000000000000bd20                netif_invoke_ext_callback
+                0x000000000000bd98                netif_set_ipaddr
+                0x000000000000bdf8                netif_set_netmask
+                0x000000000000be58                netif_set_gw
+                0x000000000000beb8                netif_set_addr
+                0x000000000000bff8                netif_add
+                0x000000000000c1a0                netif_add_noaddr
+                0x000000000000c1d0                netif_set_up
+                0x000000000000c23c                netif_set_down
+                0x000000000000c2b0                netif_remove
+                0x000000000000c37c                netif_set_link_up
+                0x000000000000c3e8                netif_init
+                0x000000000000c454                netif_set_link_down
+ .text          0x000000000000c4b0     0x16e4 build/obj_files/pbuf.o
+                0x000000000000c984                pbuf_free_ooseq
+                0x000000000000c9c4                pbuf_alloc_reference
+                0x000000000000ca50                pbuf_alloced_custom
+                0x000000000000cac0                pbuf_add_header
+                0x000000000000cadc                pbuf_add_header_force
+                0x000000000000caf8                pbuf_remove_header
+                0x000000000000cbc4                pbuf_header
+                0x000000000000cbe0                pbuf_header_force
+                0x000000000000cbfc                pbuf_free
+                0x000000000000cd14                pbuf_alloc
+                0x000000000000cf70                pbuf_realloc
+                0x000000000000d070                pbuf_free_header
+                0x000000000000d0e8                pbuf_clen
+                0x000000000000d10c                pbuf_ref
+                0x000000000000d148                pbuf_cat
+                0x000000000000d1e4                pbuf_chain
+                0x000000000000d210                pbuf_dechain
+                0x000000000000d2c8                pbuf_copy_partial_pbuf
+                0x000000000000d484                pbuf_copy
+                0x000000000000d4b0                pbuf_copy_partial
+                0x000000000000d588                pbuf_get_contiguous
+                0x000000000000d61c                pbuf_skip
+                0x000000000000d634                pbuf_take
+                0x000000000000d718                pbuf_take_at
+                0x000000000000d7fc                pbuf_clone
+                0x000000000000d858                pbuf_coalesce
+                0x000000000000d8b0                pbuf_try_get_at
+                0x000000000000d8f8                pbuf_get_at
+                0x000000000000d920                pbuf_put_at
+                0x000000000000d964                pbuf_memcmp
+                0x000000000000da50                pbuf_memfind
+                0x000000000000dafc                pbuf_strstr
+ .text          0x000000000000db94     0x2d40 build/obj_files/tcp_in.o
+                0x000000000000ff28                tcp_input
+                0x00000000000108c4                tcp_trigger_input_pcb_close
+ .text          0x00000000000108d4      0x9b0 build/obj_files/raw.o
+                0x0000000000010cf0                raw_input
+                0x0000000000010e18                raw_bind
+                0x0000000000010e40                raw_bind_netif
+                0x0000000000010e5c                raw_connect
+                0x0000000000010e90                raw_disconnect
+                0x0000000000010ea8                raw_recv
+                0x0000000000010eb4                raw_sendto_if_src
+                0x0000000000011084                raw_sendto
+                0x000000000001114c                raw_send
+                0x0000000000011168                raw_remove
+                0x00000000000111c0                raw_new
+                0x0000000000011224                raw_new_ip_type
+                0x0000000000011240                raw_netif_ip_addr_changed
+ .text          0x0000000000011284        0x0 build/obj_files/ip.o
+ .text          0x0000000000011284        0x0 build/obj_files/dns.o
+ .text          0x0000000000011284        0x0 build/obj_files/altcp_alloc.o
+ .text          0x0000000000011284      0x7a4 build/obj_files/timeouts.o
+                0x0000000000011730                sys_timeout
+                0x0000000000011794                tcp_timer_needed
+                0x0000000000011834                sys_timeouts_init
+                0x0000000000011888                sys_untimeout
+                0x00000000000118f4                sys_check_timeouts
+                0x0000000000011984                sys_restart_timeouts
+                0x00000000000119cc                sys_timeouts_sleeptime
+ .text          0x0000000000011a28     0x25b0 build/obj_files/tcp.o
+                0x0000000000011f80                tcp_init
+                0x0000000000011fb8                tcp_free
+                0x0000000000012000                tcp_backlog_delayed
+                0x000000000001207c                tcp_backlog_accepted
+                0x0000000000012238                tcp_bind
+                0x0000000000012354                tcp_bind_netif
+                0x0000000000012370                tcp_listen_with_backlog_and_err
+                0x00000000000124f0                tcp_listen_with_backlog
+                0x000000000001250c                tcp_update_rcv_ann_wnd
+                0x00000000000125c8                tcp_recved
+                0x0000000000012678                tcp_txnow
+                0x00000000000126c0                tcp_seg_free
+                0x0000000000012700                tcp_segs_free
+                0x0000000000012734                tcp_setprio
+                0x0000000000012740                tcp_seg_copy
+                0x00000000000127a4                tcp_arg
+                0x00000000000127b0                tcp_recv
+                0x0000000000012804                tcp_sent
+                0x0000000000012858                tcp_err
+                0x00000000000128ac                tcp_accept
+                0x00000000000128c8                tcp_poll
+                0x000000000001292c                tcp_next_iss
+                0x0000000000012968                tcp_eff_send_mss_netif
+                0x00000000000129e8                tcp_connect
+                0x0000000000012ba8                tcp_debug_state_str
+                0x0000000000012bc0                tcp_tcp_get_tcp_addrinfo
+                0x0000000000012c0c                tcp_free_ooseq
+                0x0000000000012c44                tcp_pcb_purge
+                0x0000000000012ccc                tcp_pcb_remove
+                0x0000000000012de0                tcp_abandon
+                0x0000000000012f78                tcp_abort
+                0x0000000000013138                tcp_netif_ip_addr_changed
+                0x0000000000013254                tcp_alloc
+                0x00000000000133f0                tcp_new
+                0x000000000001340c                tcp_new_ip_type
+                0x0000000000013614                tcp_close
+                0x0000000000013654                tcp_recv_null
+                0x00000000000136b0                tcp_process_refused_data
+                0x00000000000137a0                tcp_fasttmr
+                0x0000000000013874                tcp_shutdown
+                0x0000000000013940                tcp_slowtmr
+                0x0000000000013fa0                tcp_tmr
+ .text          0x0000000000013fd8        0x0 build/obj_files/sys.o
+ .text          0x0000000000013fd8      0x5ec build/obj_files/memp.o
+                0x000000000001445c                memp_init_pool
+                0x0000000000014460                memp_init
+                0x00000000000144b0                memp_malloc_pool
+                0x00000000000144f8                memp_malloc
+                0x0000000000014534                memp_free_pool
+                0x0000000000014588                memp_free
+ .text          0x00000000000145c4       0x30 build/obj_files/init.o
+                0x00000000000145c4                lwip_init
+ .text          0x00000000000145f4      0x864 build/obj_files/inet_chksum.o
+                0x0000000000014980                lwip_standard_chksum
+                0x0000000000014c8c                inet_chksum_pseudo
+                0x0000000000014ce8                ip_chksum_pseudo
+                0x0000000000014d00                inet_chksum_pseudo_partial
+                0x0000000000014d5c                ip_chksum_pseudo_partial
+                0x0000000000014d74                inet_chksum
+                0x0000000000014d98                inet_chksum_pbuf
+ .text          0x0000000000014e58      0xc98 build/obj_files/mem.o
+                0x00000000000153e4                mem_init
+                0x0000000000015458                mem_free
+                0x000000000001559c                mem_trim
+                0x0000000000015820                mem_malloc
+                0x0000000000015a98                mem_calloc
+ .text          0x0000000000015af0      0x89c build/obj_files/icmp.o
+                0x0000000000015ff0                icmp_input
+                0x000000000001634c                icmp_dest_unreach
+                0x000000000001636c                icmp_time_exceeded
+ .text          0x000000000001638c        0x0 build/obj_files/autoip.o
+ .text          0x000000000001638c      0xeb4 build/obj_files/ip4.o
+                0x0000000000016784                ip4_set_default_multicast_netif
+                0x000000000001678c                ip4_route
+                0x000000000001685c                ip4_input
+                0x0000000000016cd0                ip4_output_if_opt_src
+                0x000000000001710c                ip4_output_if_opt
+                0x0000000000017140                ip4_output_if
+                0x0000000000017160                ip4_output_if_src
+                0x0000000000017180                ip4_output
+ .text          0x0000000000017240      0xf00 build/obj_files/igmp.o
+                0x00000000000178c8                igmp_init
+                0x00000000000178e4                igmp_stop
+                0x0000000000017958                igmp_report_groups
+                0x0000000000017998                igmp_lookfor_group
+                0x0000000000017a94                igmp_start
+                0x0000000000017af8                igmp_input
+                0x0000000000017d7c                igmp_joingroup_netif
+                0x0000000000017e70                igmp_joingroup
+                0x0000000000017f18                igmp_leavegroup_netif
+                0x0000000000018018                igmp_leavegroup
+                0x00000000000180cc                igmp_tmr
+ .text          0x0000000000018140      0x7f8 build/obj_files/ip4_addr.o
+                0x00000000000184cc                ip4_addr_isbroadcast_u32
+                0x000000000001852c                ip4_addr_netmask_valid
+                0x000000000001857c                ip4addr_aton
+                0x0000000000018814                ipaddr_addr
+                0x0000000000018840                ip4addr_ntoa_r
+                0x0000000000018918                ip4addr_ntoa
+ .text          0x0000000000018938     0x16fc build/obj_files/etharp.o
+                0x0000000000019434                etharp_cleanup_netif
+                0x00000000000194a8                etharp_find_addr
+                0x0000000000019560                etharp_get_entry
+                0x000000000001964c                etharp_input
+                0x0000000000019814                etharp_request
+                0x0000000000019830                etharp_tmr
+                0x0000000000019a90                etharp_query
+                0x0000000000019e20                etharp_output
+ .text          0x000000000001a034        0x0 build/obj_files/dhcp.o
+ .text          0x000000000001a034     0x1480 build/obj_files/ip4_frag.o
+                0x000000000001ac80                ip_reass_tmr
+                0x000000000001ace0                ip4_reass
+                0x000000000001b148                ip4_frag
+ .text          0x000000000001b4b4        0x0 build/obj_files/start.o
+ .text          0x000000000001b4b4       0x90 build/obj_files/trap.o
+                0x000000000001b4b4                trap_entry
+ .text          0x000000000001b544        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_udivdi3.o)
+ .text.__udivdi3
+                0x000000000001b544      0x4a0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_udivdi3.o)
+                0x000000000001b544                __udivdi3
+ .text          0x000000000001b9e4        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
  .text.__addsf3
-                0x000000000001b498      0x464 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
-                0x000000000001b498                __addsf3
- .text          0x000000000001b8fc        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
- .text.__gesf2  0x000000000001b8fc       0xc4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
-                0x000000000001b8fc                __gesf2
-                0x000000000001b8fc                __gtsf2
- .text          0x000000000001b9c0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
- .text.__lesf2  0x000000000001b9c0       0xc4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
-                0x000000000001b9c0                __ltsf2
-                0x000000000001b9c0                __lesf2
- .text          0x000000000001ba84        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
+                0x000000000001b9e4      0x464 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
+                0x000000000001b9e4                __addsf3
+ .text          0x000000000001be48        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
+ .text.__gesf2  0x000000000001be48       0xc4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
+                0x000000000001be48                __gesf2
+                0x000000000001be48                __gtsf2
+ .text          0x000000000001bf0c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
+ .text.__lesf2  0x000000000001bf0c       0xc4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
+                0x000000000001bf0c                __ltsf2
+                0x000000000001bf0c                __lesf2
+ .text          0x000000000001bfd0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
  .text.__mulsf3
-                0x000000000001ba84      0x384 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
-                0x000000000001ba84                __mulsf3
- .text          0x000000000001be08        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
+                0x000000000001bfd0      0x384 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
+                0x000000000001bfd0                __mulsf3
+ .text          0x000000000001c354        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
  .text.__subsf3
-                0x000000000001be08      0x484 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
-                0x000000000001be08                __subsf3
- .text          0x000000000001c28c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
+                0x000000000001c354      0x484 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
+                0x000000000001c354                __subsf3
+ .text          0x000000000001c7d8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
  .text.__floatunsisf
-                0x000000000001c28c      0x124 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
-                0x000000000001c28c                __floatunsisf
- .text          0x000000000001c3b0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
+                0x000000000001c7d8      0x124 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
+                0x000000000001c7d8                __floatunsisf
+ .text          0x000000000001c8fc        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
+ .text          0x000000000001c8fc        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
  .text.__clzsi2
-                0x000000000001c3b0       0x94 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
-                0x000000000001c3b0                __clzsi2
- .text          0x000000000001c444        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
- .text          0x000000000001c444        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
- .text._sbrk    0x000000000001c444       0x34 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
-                0x000000000001c444                _sbrk
+                0x000000000001c8fc       0x94 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
+                0x000000000001c8fc                __clzsi2
+ .text          0x000000000001c990        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
+ .text._sbrk    0x000000000001c990       0x34 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
+                0x000000000001c990                _sbrk
  *(.gnu.linkonce.t.*)
  *(.note.gnu.build-id)
 
 .sdata2._global_impure_ptr
-                0x000000000001c478        0x4
+                0x000000000001c9c4        0x4
  .sdata2._global_impure_ptr
-                0x000000000001c478        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
-                0x000000000001c478                _global_impure_ptr
+                0x000000000001c9c4        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
+                0x000000000001c9c4                _global_impure_ptr
 
-.rela.dyn       0x000000000001c47c        0x0
- .rela.text     0x000000000001c47c        0x0 build/obj_files/main.o
- .rela.rodata   0x000000000001c47c        0x0 build/obj_files/main.o
- .rela.init     0x000000000001c47c        0x0 build/obj_files/main.o
+.eh_frame       0x000000000001c9c8       0x28
+ .eh_frame      0x000000000001c9c8       0x28 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_udivdi3.o)
+
+.rela.dyn       0x000000000001c9f0        0x0
+ .rela.text     0x000000000001c9f0        0x0 build/obj_files/main.o
+ .rela.rodata   0x000000000001c9f0        0x0 build/obj_files/main.o
+ .rela.init     0x000000000001c9f0        0x0 build/obj_files/main.o
  .rela.text.__libc_init_array
-                0x000000000001c47c        0x0 build/obj_files/main.o
+                0x000000000001c9f0        0x0 build/obj_files/main.o
  .rela.text._sbrk_r
-                0x000000000001c47c        0x0 build/obj_files/main.o
+                0x000000000001c9f0        0x0 build/obj_files/main.o
  .rela.text._sbrk
-                0x000000000001c47c        0x0 build/obj_files/main.o
+                0x000000000001c9f0        0x0 build/obj_files/main.o
 
 .fini
  *(SORT_NONE(.fini))
                 [!provide]                        PROVIDE (__etext = .)
                 [!provide]                        PROVIDE (_etext = .)
                 [!provide]                        PROVIDE (etext = .)
-                0x000000000001c47c                . = ALIGN (0x4)
+                0x000000000001c9f0                . = ALIGN (0x4)
 
-.preinit_array  0x000000000001c47c        0x0
-                0x000000000001c47c                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x000000000001c9f0        0x0
+                0x000000000001c9f0                PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
-                0x000000000001c47c                PROVIDE (__preinit_array_end = .)
+                0x000000000001c9f0                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x000000000001c47c        0x0
-                0x000000000001c47c                PROVIDE (__init_array_start = .)
+.init_array     0x000000000001c9f0        0x0
+                0x000000000001c9f0                PROVIDE (__init_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
-                0x000000000001c47c                PROVIDE (__init_array_end = .)
+                0x000000000001c9f0                PROVIDE (__init_array_end = .)
 
-.fini_array     0x000000000001c47c        0x0
+.fini_array     0x000000000001c9f0        0x0
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
@@ -12527,487 +12536,490 @@ LOAD c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-emb
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
 
-.lalign         0x000000000001c47c        0x0
-                0x000000000001c47c                PROVIDE (_data_lma = .)
+.lalign         0x000000000001c9f0        0x0
+                0x000000000001c9f0                PROVIDE (_data_lma = .)
 
-.dalign         0x000000000001c47c        0x0
-                0x000000000001c47c                PROVIDE (_data = .)
+.dalign         0x000000000001c9f0        0x0
+                0x000000000001c9f0                PROVIDE (_data = .)
 
-.data           0x000000000001c480     0x360a
+.data           0x000000000001c9f0     0x3672
  *(.rdata)
  *(.rodata .rodata.*)
- .rodata        0x000000000001c480       0xb8 build/obj_files/main.o
+ .rodata        0x000000000001c9f0       0xb8 build/obj_files/main.o
  .rodata.str1.4
-                0x000000000001c538      0x160 build/obj_files/main.o
+                0x000000000001caa8      0x1c4 build/obj_files/main.o
  .rodata.str1.4
-                0x000000000001c698       0x5c build/obj_files/mac.o
+                0x000000000001cc6c       0x5c build/obj_files/mac.o
                                          0xd0 (size before relaxing)
  .rodata.str1.4
-                0x000000000001c6f4       0xeb build/obj_files/rtl8211fd_drv.o
+                0x000000000001ccc8       0xeb build/obj_files/rtl8211fd_drv.o
                                         0x15f (size before relaxing)
- *fill*         0x000000000001c7df        0x1 
- .rodata        0x000000000001c7e0      0x640 build/obj_files/lwiperf.o
+ *fill*         0x000000000001cdb3        0x1 
+ .rodata        0x000000000001cdb4      0x640 build/obj_files/lwiperf.o
  .rodata.str1.4
-                0x000000000001ce20      0x133 build/obj_files/lwiperf.o
+                0x000000000001d3f4      0x133 build/obj_files/lwiperf.o
                                         0x1a7 (size before relaxing)
- *fill*         0x000000000001cf53        0x1 
+ *fill*         0x000000000001d527        0x1 
  .rodata.str1.4
-                0x000000000001cf54        0xe build/obj_files/ethernetif.o
+                0x000000000001d528        0xe build/obj_files/ethernetif.o
                                          0x82 (size before relaxing)
- *fill*         0x000000000001cf62        0x2 
+ *fill*         0x000000000001d536        0x2 
  .rodata.str1.4
-                0x000000000001cf64       0x29 build/obj_files/bridgeif_fdb.o
+                0x000000000001d538       0x29 build/obj_files/bridgeif_fdb.o
                                          0x9d (size before relaxing)
- *fill*         0x000000000001cf8d        0x3 
+ *fill*         0x000000000001d561        0x3 
  .rodata.str1.4
-                0x000000000001cf90       0x31 build/obj_files/ethernet.o
+                0x000000000001d564       0x31 build/obj_files/ethernet.o
                                          0xa5 (size before relaxing)
- *fill*         0x000000000001cfc1        0x3 
+ *fill*         0x000000000001d595        0x3 
  .rodata.str1.4
-                0x000000000001cfc4      0x773 build/obj_files/tcp_out.o
+                0x000000000001d598      0x773 build/obj_files/tcp_out.o
                                         0x7e7 (size before relaxing)
- *fill*         0x000000000001d737        0x1 
- .rodata        0x000000000001d738       0x54 build/obj_files/altcp_tcp.o
-                0x000000000001d738                altcp_tcp_functions
+ *fill*         0x000000000001dd0b        0x1 
+ .rodata        0x000000000001dd0c       0x54 build/obj_files/altcp_tcp.o
+                0x000000000001dd0c                altcp_tcp_functions
  .rodata.str1.4
-                0x000000000001d78c       0x19 build/obj_files/altcp_tcp.o
+                0x000000000001dd60       0x19 build/obj_files/altcp_tcp.o
                                          0x9d (size before relaxing)
- *fill*         0x000000000001d7a5        0x3 
+ *fill*         0x000000000001dd79        0x3 
  .rodata.str1.4
-                0x000000000001d7a8      0x232 build/obj_files/netif.o
+                0x000000000001dd7c      0x232 build/obj_files/netif.o
                                         0x2a6 (size before relaxing)
- *fill*         0x000000000001d9da        0x2 
+ *fill*         0x000000000001dfae        0x2 
  .rodata.str1.4
-                0x000000000001d9dc      0x279 build/obj_files/pbuf.o
+                0x000000000001dfb0      0x279 build/obj_files/pbuf.o
                                         0x2f9 (size before relaxing)
- *fill*         0x000000000001dc55        0x3 
- .rodata        0x000000000001dc58       0x28 build/obj_files/tcp_in.o
+ *fill*         0x000000000001e229        0x3 
+ .rodata        0x000000000001e22c       0x28 build/obj_files/tcp_in.o
  .rodata.str1.4
-                0x000000000001dc80      0x422 build/obj_files/tcp_in.o
+                0x000000000001e254      0x422 build/obj_files/tcp_in.o
                                         0x496 (size before relaxing)
- *fill*         0x000000000001e0a2        0x2 
+ *fill*         0x000000000001e676        0x2 
  .rodata.str1.4
-                0x000000000001e0a4       0x72 build/obj_files/raw.o
+                0x000000000001e678       0x72 build/obj_files/raw.o
                                          0xe6 (size before relaxing)
- *fill*         0x000000000001e116        0x2 
- .rodata        0x000000000001e118       0x20 build/obj_files/timeouts.o
-                0x000000000001e118                lwip_cyclic_timers
+ *fill*         0x000000000001e6ea        0x2 
+ .rodata        0x000000000001e6ec       0x20 build/obj_files/timeouts.o
+                0x000000000001e6ec                lwip_cyclic_timers
  .rodata.str1.4
-                0x000000000001e138       0x8a build/obj_files/timeouts.o
+                0x000000000001e70c       0x8a build/obj_files/timeouts.o
                                          0xfe (size before relaxing)
- *fill*         0x000000000001e1c2        0x2 
- .rodata        0x000000000001e1c4       0x49 build/obj_files/tcp.o
-                0x000000000001e1c4                tcp_pcb_lists
- *fill*         0x000000000001e20d        0x3 
+ *fill*         0x000000000001e796        0x2 
+ .rodata        0x000000000001e798       0x49 build/obj_files/tcp.o
+                0x000000000001e798                tcp_pcb_lists
+ *fill*         0x000000000001e7e1        0x3 
  .rodata.str1.4
-                0x000000000001e210      0x5b2 build/obj_files/tcp.o
+                0x000000000001e7e4      0x5b2 build/obj_files/tcp.o
                                         0x636 (size before relaxing)
- *fill*         0x000000000001e7c2        0x2 
- .rodata        0x000000000001e7c4       0x30 build/obj_files/memp.o
-                0x000000000001e7c4                memp_pools
+ *fill*         0x000000000001ed96        0x2 
+ .rodata        0x000000000001ed98       0x30 build/obj_files/memp.o
+                0x000000000001ed98                memp_pools
  .rodata.str1.4
-                0x000000000001e7f4       0x56 build/obj_files/memp.o
+                0x000000000001edc8       0x56 build/obj_files/memp.o
                                          0xca (size before relaxing)
- *fill*         0x000000000001e84a        0x2 
+ *fill*         0x000000000001ee1e        0x2 
  .rodata.str1.4
-                0x000000000001e84c        0xa build/obj_files/inet_chksum.o
+                0x000000000001ee20        0xa build/obj_files/inet_chksum.o
                                          0x7e (size before relaxing)
- *fill*         0x000000000001e856        0x2 
+ *fill*         0x000000000001ee2a        0x2 
  .rodata.str1.4
-                0x000000000001e858      0x203 build/obj_files/mem.o
+                0x000000000001ee2c      0x203 build/obj_files/mem.o
                                         0x277 (size before relaxing)
- *fill*         0x000000000001ea5b        0x1 
+ *fill*         0x000000000001f02f        0x1 
  .rodata.str1.4
-                0x000000000001ea5c       0x96 build/obj_files/icmp.o
+                0x000000000001f030       0x96 build/obj_files/icmp.o
                                         0x10a (size before relaxing)
- *fill*         0x000000000001eaf2        0x2 
+ *fill*         0x000000000001f0c6        0x2 
  .rodata.str1.4
-                0x000000000001eaf4       0x39 build/obj_files/ip4.o
+                0x000000000001f0c8       0x39 build/obj_files/ip4.o
                                          0xad (size before relaxing)
- *fill*         0x000000000001eb2d        0x3 
+ *fill*         0x000000000001f101        0x3 
  .rodata.str1.4
-                0x000000000001eb30       0xb1 build/obj_files/igmp.o
+                0x000000000001f104       0xb1 build/obj_files/igmp.o
                                         0x125 (size before relaxing)
- *fill*         0x000000000001ebe1        0x3 
- .rodata        0x000000000001ebe4       0x14 build/obj_files/ip4_addr.o
+ *fill*         0x000000000001f1b5        0x3 
+ .rodata        0x000000000001f1b8       0x14 build/obj_files/ip4_addr.o
  .rodata.str1.4
-                0x000000000001ebf8        0xa build/obj_files/ip4_addr.o
+                0x000000000001f1cc        0xa build/obj_files/ip4_addr.o
                                          0x7e (size before relaxing)
- *fill*         0x000000000001ec02        0x2 
+ *fill*         0x000000000001f1d6        0x2 
  .rodata.str1.4
-                0x000000000001ec04      0x1d6 build/obj_files/etharp.o
+                0x000000000001f1d8      0x1d6 build/obj_files/etharp.o
                                         0x25a (size before relaxing)
- *fill*         0x000000000001edda        0x2 
+ *fill*         0x000000000001f3ae        0x2 
  .rodata.str1.4
-                0x000000000001eddc      0x190 build/obj_files/ip4_frag.o
+                0x000000000001f3b0      0x190 build/obj_files/ip4_frag.o
                                         0x20f (size before relaxing)
  .rodata._ctype_
-                0x000000000001ef6c      0x101 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-ctype_.o)
-                0x000000000001ef6c                _ctype_
- *fill*         0x000000000001f06d        0x3 
+                0x000000000001f540      0x101 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-ctype_.o)
+                0x000000000001f540                _ctype_
+ *fill*         0x000000000001f641        0x3 
  .rodata.__mulsf3
-                0x000000000001f070       0x40 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
+                0x000000000001f644       0x40 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
  .rodata.__clz_tab
-                0x000000000001f0b0      0x100 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
-                0x000000000001f0b0                __clz_tab
+                0x000000000001f684      0x100 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
+                0x000000000001f684                __clz_tab
  *(.gnu.linkonce.r.*)
  *(.data .data.*)
- .data          0x000000000001f1b0        0x0 build/obj_files/main.o
- .data          0x000000000001f1b0        0x0 build/obj_files/mac.o
- .data          0x000000000001f1b0        0x0 build/obj_files/rtl8211fd_drv.o
- .data          0x000000000001f1b0        0x0 build/obj_files/lwiperf.o
- .data          0x000000000001f1b0        0x0 build/obj_files/common.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ethernetif.o
- .data          0x000000000001f1b0        0x0 build/obj_files/sockets.o
- .data          0x000000000001f1b0        0x0 build/obj_files/api_msg.o
- .data          0x000000000001f1b0        0x0 build/obj_files/err.o
- .data          0x000000000001f1b0        0x0 build/obj_files/if_api.o
- .data          0x000000000001f1b0        0x0 build/obj_files/netbuf.o
- .data          0x000000000001f1b0        0x0 build/obj_files/tcpip.o
- .data          0x000000000001f1b0        0x0 build/obj_files/netifapi.o
- .data          0x000000000001f1b0        0x0 build/obj_files/api_lib.o
- .data          0x000000000001f1b0        0x0 build/obj_files/netdb.o
- .data          0x000000000001f1b0        0x0 build/obj_files/bridgeif.o
- .data          0x000000000001f1b0        0x0 build/obj_files/lowpan6_common.o
- .data          0x000000000001f1b0        0x0 build/obj_files/lowpan6_ble.o
- .data          0x000000000001f1b0        0x0 build/obj_files/lowpan6.o
- .data          0x000000000001f1b0        0x0 build/obj_files/zepif.o
- .data          0x000000000001f1b0        0x0 build/obj_files/bridgeif_fdb.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ethernet.o
- .data          0x000000000001f1b0        0x0 build/obj_files/fsm.o
- .data          0x000000000001f1b0        0x0 build/obj_files/upap.o
- .data          0x000000000001f1b0        0x0 build/obj_files/demand.o
- .data          0x000000000001f1b0        0x0 build/obj_files/eui64.o
- .data          0x000000000001f1b0        0x0 build/obj_files/lcp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ipcp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/pppos.o
- .data          0x000000000001f1b0        0x0 build/obj_files/mppe.o
- .data          0x000000000001f1b0        0x0 build/obj_files/multilink.o
- .data          0x000000000001f1b0        0x0 build/obj_files/pppcrypt.o
- .data          0x000000000001f1b0        0x0 build/obj_files/pppoe.o
- .data          0x000000000001f1b0        0x0 build/obj_files/utils.o
- .data          0x000000000001f1b0        0x0 build/obj_files/auth.o
- .data          0x000000000001f1b0        0x0 build/obj_files/chap-new.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ccp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ipv6cp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/vj.o
- .data          0x000000000001f1b0        0x0 build/obj_files/chap-md5.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ecp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ppp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/chap_ms.o
- .data          0x000000000001f1b0        0x0 build/obj_files/pppapi.o
- .data          0x000000000001f1b0        0x0 build/obj_files/magic.o
- .data          0x000000000001f1b0        0x0 build/obj_files/pppol2tp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/eap.o
- .data          0x000000000001f1b0        0x0 build/obj_files/arc4.o
- .data          0x000000000001f1b0        0x0 build/obj_files/md5.o
- .data          0x000000000001f1b0        0x0 build/obj_files/md4.o
- .data          0x000000000001f1b0        0x0 build/obj_files/sha1.o
- .data          0x000000000001f1b0        0x0 build/obj_files/des.o
- .data          0x000000000001f1b0        0x0 build/obj_files/tcp_out.o
- .data          0x000000000001f1b0        0x0 build/obj_files/udp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/altcp_tcp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/def.o
- .data          0x000000000001f1b0        0x0 build/obj_files/altcp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/stats.o
- .data          0x000000000001f1b0        0x0 build/obj_files/netif.o
- .data          0x000000000001f1b0        0x0 build/obj_files/pbuf.o
- .data          0x000000000001f1b0        0x0 build/obj_files/tcp_in.o
- .data          0x000000000001f1b0        0x0 build/obj_files/raw.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ip.o
- .data          0x000000000001f1b0        0x0 build/obj_files/dns.o
- .data          0x000000000001f1b0        0x0 build/obj_files/altcp_alloc.o
- .data          0x000000000001f1b0        0x0 build/obj_files/timeouts.o
- .data          0x000000000001f1b0        0x0 build/obj_files/tcp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/sys.o
- .data          0x000000000001f1b0        0x0 build/obj_files/memp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/init.o
- .data          0x000000000001f1b0        0x0 build/obj_files/inet_chksum.o
- .data          0x000000000001f1b0        0x0 build/obj_files/mem.o
- .data          0x000000000001f1b0        0x0 build/obj_files/icmp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/autoip.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ip4.o
- .data          0x000000000001f1b0        0x0 build/obj_files/igmp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ip4_addr.o
- .data          0x000000000001f1b0        0x0 build/obj_files/etharp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/dhcp.o
- .data          0x000000000001f1b0        0x0 build/obj_files/ip4_frag.o
- .data          0x000000000001f1b0        0x0 build/obj_files/start.o
- .data          0x000000000001f1b0        0x0 build/obj_files/trap.o
- .data          0x000000000001f1b0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-atoi.o)
- .data          0x000000000001f1b0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-ctype_.o)
- .data          0x000000000001f1b0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-init.o)
- .data          0x000000000001f1b0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-malloc.o)
- .data          0x000000000001f1b0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+ .data          0x000000000001f784        0x0 build/obj_files/main.o
+ .data          0x000000000001f784        0x0 build/obj_files/mac.o
+ .data          0x000000000001f784        0x0 build/obj_files/rtl8211fd_drv.o
+ .data          0x000000000001f784        0x0 build/obj_files/lwiperf.o
+ .data          0x000000000001f784        0x0 build/obj_files/common.o
+ .data          0x000000000001f784        0x0 build/obj_files/ethernetif.o
+ .data          0x000000000001f784        0x0 build/obj_files/sockets.o
+ .data          0x000000000001f784        0x0 build/obj_files/api_msg.o
+ .data          0x000000000001f784        0x0 build/obj_files/err.o
+ .data          0x000000000001f784        0x0 build/obj_files/if_api.o
+ .data          0x000000000001f784        0x0 build/obj_files/netbuf.o
+ .data          0x000000000001f784        0x0 build/obj_files/tcpip.o
+ .data          0x000000000001f784        0x0 build/obj_files/netifapi.o
+ .data          0x000000000001f784        0x0 build/obj_files/api_lib.o
+ .data          0x000000000001f784        0x0 build/obj_files/netdb.o
+ .data          0x000000000001f784        0x0 build/obj_files/bridgeif.o
+ .data          0x000000000001f784        0x0 build/obj_files/lowpan6_common.o
+ .data          0x000000000001f784        0x0 build/obj_files/lowpan6_ble.o
+ .data          0x000000000001f784        0x0 build/obj_files/lowpan6.o
+ .data          0x000000000001f784        0x0 build/obj_files/zepif.o
+ .data          0x000000000001f784        0x0 build/obj_files/bridgeif_fdb.o
+ .data          0x000000000001f784        0x0 build/obj_files/ethernet.o
+ .data          0x000000000001f784        0x0 build/obj_files/fsm.o
+ .data          0x000000000001f784        0x0 build/obj_files/upap.o
+ .data          0x000000000001f784        0x0 build/obj_files/demand.o
+ .data          0x000000000001f784        0x0 build/obj_files/eui64.o
+ .data          0x000000000001f784        0x0 build/obj_files/lcp.o
+ .data          0x000000000001f784        0x0 build/obj_files/ipcp.o
+ .data          0x000000000001f784        0x0 build/obj_files/pppos.o
+ .data          0x000000000001f784        0x0 build/obj_files/mppe.o
+ .data          0x000000000001f784        0x0 build/obj_files/multilink.o
+ .data          0x000000000001f784        0x0 build/obj_files/pppcrypt.o
+ .data          0x000000000001f784        0x0 build/obj_files/pppoe.o
+ .data          0x000000000001f784        0x0 build/obj_files/utils.o
+ .data          0x000000000001f784        0x0 build/obj_files/auth.o
+ .data          0x000000000001f784        0x0 build/obj_files/chap-new.o
+ .data          0x000000000001f784        0x0 build/obj_files/ccp.o
+ .data          0x000000000001f784        0x0 build/obj_files/ipv6cp.o
+ .data          0x000000000001f784        0x0 build/obj_files/vj.o
+ .data          0x000000000001f784        0x0 build/obj_files/chap-md5.o
+ .data          0x000000000001f784        0x0 build/obj_files/ecp.o
+ .data          0x000000000001f784        0x0 build/obj_files/ppp.o
+ .data          0x000000000001f784        0x0 build/obj_files/chap_ms.o
+ .data          0x000000000001f784        0x0 build/obj_files/pppapi.o
+ .data          0x000000000001f784        0x0 build/obj_files/magic.o
+ .data          0x000000000001f784        0x0 build/obj_files/pppol2tp.o
+ .data          0x000000000001f784        0x0 build/obj_files/eap.o
+ .data          0x000000000001f784        0x0 build/obj_files/arc4.o
+ .data          0x000000000001f784        0x0 build/obj_files/md5.o
+ .data          0x000000000001f784        0x0 build/obj_files/md4.o
+ .data          0x000000000001f784        0x0 build/obj_files/sha1.o
+ .data          0x000000000001f784        0x0 build/obj_files/des.o
+ .data          0x000000000001f784        0x0 build/obj_files/tcp_out.o
+ .data          0x000000000001f784        0x0 build/obj_files/udp.o
+ .data          0x000000000001f784        0x0 build/obj_files/altcp_tcp.o
+ .data          0x000000000001f784        0x0 build/obj_files/def.o
+ .data          0x000000000001f784        0x0 build/obj_files/altcp.o
+ .data          0x000000000001f784        0x0 build/obj_files/stats.o
+ .data          0x000000000001f784        0x0 build/obj_files/netif.o
+ .data          0x000000000001f784        0x0 build/obj_files/pbuf.o
+ .data          0x000000000001f784        0x0 build/obj_files/tcp_in.o
+ .data          0x000000000001f784        0x0 build/obj_files/raw.o
+ .data          0x000000000001f784        0x0 build/obj_files/ip.o
+ .data          0x000000000001f784        0x0 build/obj_files/dns.o
+ .data          0x000000000001f784        0x0 build/obj_files/altcp_alloc.o
+ .data          0x000000000001f784        0x0 build/obj_files/timeouts.o
+ .data          0x000000000001f784        0x0 build/obj_files/tcp.o
+ .data          0x000000000001f784        0x0 build/obj_files/sys.o
+ .data          0x000000000001f784        0x0 build/obj_files/memp.o
+ .data          0x000000000001f784        0x0 build/obj_files/init.o
+ .data          0x000000000001f784        0x0 build/obj_files/inet_chksum.o
+ .data          0x000000000001f784        0x0 build/obj_files/mem.o
+ .data          0x000000000001f784        0x0 build/obj_files/icmp.o
+ .data          0x000000000001f784        0x0 build/obj_files/autoip.o
+ .data          0x000000000001f784        0x0 build/obj_files/ip4.o
+ .data          0x000000000001f784        0x0 build/obj_files/igmp.o
+ .data          0x000000000001f784        0x0 build/obj_files/ip4_addr.o
+ .data          0x000000000001f784        0x0 build/obj_files/etharp.o
+ .data          0x000000000001f784        0x0 build/obj_files/dhcp.o
+ .data          0x000000000001f784        0x0 build/obj_files/ip4_frag.o
+ .data          0x000000000001f784        0x0 build/obj_files/start.o
+ .data          0x000000000001f784        0x0 build/obj_files/trap.o
+ .data          0x000000000001f784        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-atoi.o)
+ .data          0x000000000001f784        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-ctype_.o)
+ .data          0x000000000001f784        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-init.o)
+ .data          0x000000000001f784        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-malloc.o)
+ .data          0x000000000001f784        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
  .data.__malloc_av_
-                0x000000000001f1b0      0x408 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
-                0x000000000001f1b0                __malloc_av_
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcmp.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcpy.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memmove-stub.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memset.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mlock.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-rand.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-sbrkr.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strlen.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strncmp.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strtol.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-freer.o)
- .data          0x000000000001f5b8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
+                0x000000000001f784      0x408 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+                0x000000000001f784                __malloc_av_
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcmp.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcpy.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memmove-stub.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memset.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mlock.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-rand.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-sbrkr.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strlen.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strncmp.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strtol.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-freer.o)
+ .data          0x000000000001fb8c        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
+ *fill*         0x000000000001fb8c        0x4 
  .data.impure_data
-                0x000000000001f5b8      0x428 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-reent.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
- .data          0x000000000001f9e0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
+                0x000000000001fb90      0x428 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-reent.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_udivdi3.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
+ .data          0x000000000001ffb8        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
  *(.gnu.linkonce.d.*)
-                0x000000000001f9e0                . = ALIGN (0x8)
-                0x00000000000201d0                PROVIDE (__global_pointer$ = (. + 0x7f0))
+                0x000000000001ffb8                . = ALIGN (0x8)
+                0x00000000000207a8                PROVIDE (__global_pointer$ = (. + 0x7f0))
  *(.sdata .sdata.*)
- .sdata         0x000000000001f9e0        0x4 build/obj_files/main.o
- .sdata         0x000000000001f9e4        0x6 build/obj_files/tcp.o
- *fill*         0x000000000001f9ea        0x2 
+ .sdata         0x000000000001ffb8        0x4 build/obj_files/main.o
+ .sdata         0x000000000001ffbc        0x6 build/obj_files/tcp.o
+ *fill*         0x000000000001ffc2        0x2 
  .sdata.__malloc_sbrk_base
-                0x000000000001f9ec        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
-                0x000000000001f9ec                __malloc_sbrk_base
+                0x000000000001ffc4        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+                0x000000000001ffc4                __malloc_sbrk_base
  .sdata.__malloc_trim_threshold
-                0x000000000001f9f0        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
-                0x000000000001f9f0                __malloc_trim_threshold
+                0x000000000001ffc8        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+                0x000000000001ffc8                __malloc_trim_threshold
  .sdata._impure_ptr
-                0x000000000001f9f4        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
-                0x000000000001f9f4                _impure_ptr
+                0x000000000001ffcc        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
+                0x000000000001ffcc                _impure_ptr
  *(.gnu.linkonce.s.*)
-                0x000000000001f9f8                . = ALIGN (0x8)
+                0x000000000001ffd0                . = ALIGN (0x8)
  *(.srodata.cst16)
  *(.srodata.cst8)
  *(.srodata.cst4)
- .srodata.cst4  0x000000000001f9f8        0x4 build/obj_files/main.o
+ .srodata.cst4  0x000000000001ffd0        0x4 build/obj_files/main.o
  *(.srodata.cst2)
  *(.srodata .srodata.*)
- .srodata       0x000000000001f9fc        0xe build/obj_files/ethernet.o
-                0x000000000001f9fc                ethzero
-                0x000000000001fa04                ethbroadcast
- *fill*         0x000000000001fa0a        0x2 
- .srodata       0x000000000001fa0c        0x4 build/obj_files/timeouts.o
-                0x000000000001fa0c                lwip_num_cyclic_timers
- .srodata       0x000000000001fa10        0x7 build/obj_files/tcp.o
- *fill*         0x000000000001fa17        0x1 
- .srodata       0x000000000001fa18       0x60 build/obj_files/memp.o
-                0x000000000001fa18                memp_PBUF_POOL
-                0x000000000001fa20                memp_PBUF
-                0x000000000001fa28                memp_SYS_TIMEOUT
-                0x000000000001fa30                memp_IGMP_GROUP
-                0x000000000001fa38                memp_ARP_QUEUE
-                0x000000000001fa40                memp_FRAG_PBUF
-                0x000000000001fa48                memp_REASSDATA
-                0x000000000001fa50                memp_ALTCP_PCB
-                0x000000000001fa58                memp_TCP_SEG
-                0x000000000001fa60                memp_TCP_PCB_LISTEN
-                0x000000000001fa68                memp_TCP_PCB
-                0x000000000001fa70                memp_RAW_PCB
- .srodata       0x000000000001fa78        0x8 build/obj_files/ip4_addr.o
-                0x000000000001fa78                ip_addr_broadcast
-                0x000000000001fa7c                ip_addr_any
-                0x000000000001fa8a                . = (. + 0xa)
- *fill*         0x000000000001fa80        0xa 
-                0x000000000001fa8c                . = ALIGN (0x4)
-                0x000000000001fa8c                PROVIDE (_edata = .)
+ .srodata       0x000000000001ffd4        0xe build/obj_files/ethernet.o
+                0x000000000001ffd4                ethzero
+                0x000000000001ffdc                ethbroadcast
+ *fill*         0x000000000001ffe2        0x2 
+ .srodata       0x000000000001ffe4        0x4 build/obj_files/timeouts.o
+                0x000000000001ffe4                lwip_num_cyclic_timers
+ .srodata       0x000000000001ffe8        0x7 build/obj_files/tcp.o
+ *fill*         0x000000000001ffef        0x1 
+ .srodata       0x000000000001fff0       0x60 build/obj_files/memp.o
+                0x000000000001fff0                memp_PBUF_POOL
+                0x000000000001fff8                memp_PBUF
+                0x0000000000020000                memp_SYS_TIMEOUT
+                0x0000000000020008                memp_IGMP_GROUP
+                0x0000000000020010                memp_ARP_QUEUE
+                0x0000000000020018                memp_FRAG_PBUF
+                0x0000000000020020                memp_REASSDATA
+                0x0000000000020028                memp_ALTCP_PCB
+                0x0000000000020030                memp_TCP_SEG
+                0x0000000000020038                memp_TCP_PCB_LISTEN
+                0x0000000000020040                memp_TCP_PCB
+                0x0000000000020048                memp_RAW_PCB
+ .srodata       0x0000000000020050        0x8 build/obj_files/ip4_addr.o
+                0x0000000000020050                ip_addr_broadcast
+                0x0000000000020054                ip_addr_any
+                0x0000000000020062                . = (. + 0xa)
+ *fill*         0x0000000000020058        0xa 
+                0x0000000000020064                . = ALIGN (0x4)
+                0x0000000000020064                PROVIDE (_edata = .)
                 [!provide]                        PROVIDE (edata = .)
                 [!provide]                        PROVIDE (_fbss = .)
-                0x000000000001fa8c                PROVIDE (__bss_start = .)
+                0x0000000000020064                PROVIDE (__bss_start = .)
 
-.bss            0x000000000001fac0     0x446c
+.bss            0x0000000000020080     0x446c
  *(.sbss*)
- .sbss          0x000000000001fac0       0x14 build/obj_files/main.o
- .sbss          0x000000000001fad4        0x4 build/obj_files/lwiperf.o
- .sbss          0x000000000001fad8        0x8 build/obj_files/netif.o
- .sbss          0x000000000001fae0       0x24 build/obj_files/tcp_in.o
- .sbss          0x000000000001fb04        0x4 build/obj_files/raw.o
- .sbss          0x000000000001fb08        0xc build/obj_files/timeouts.o
- .sbss          0x000000000001fb14        0x2 build/obj_files/tcp.o
- *fill*         0x000000000001fb16        0x2 
- .sbss          0x000000000001fb18        0xc build/obj_files/mem.o
- .sbss          0x000000000001fb24        0x6 build/obj_files/ip4.o
- *fill*         0x000000000001fb2a        0x2 
- .sbss          0x000000000001fb2c        0x8 build/obj_files/igmp.o
- .sbss          0x000000000001fb34        0x1 build/obj_files/etharp.o
- *fill*         0x000000000001fb35        0x3 
- .sbss          0x000000000001fb38        0x8 build/obj_files/ip4_frag.o
+ .sbss          0x0000000000020080       0x14 build/obj_files/main.o
+ .sbss          0x0000000000020094        0x4 build/obj_files/lwiperf.o
+ .sbss          0x0000000000020098        0x8 build/obj_files/netif.o
+ .sbss          0x00000000000200a0       0x24 build/obj_files/tcp_in.o
+ .sbss          0x00000000000200c4        0x4 build/obj_files/raw.o
+ .sbss          0x00000000000200c8        0xc build/obj_files/timeouts.o
+ .sbss          0x00000000000200d4        0x2 build/obj_files/tcp.o
+ *fill*         0x00000000000200d6        0x2 
+ .sbss          0x00000000000200d8        0xc build/obj_files/mem.o
+ .sbss          0x00000000000200e4        0x6 build/obj_files/ip4.o
+ *fill*         0x00000000000200ea        0x2 
+ .sbss          0x00000000000200ec        0x8 build/obj_files/igmp.o
+ .sbss          0x00000000000200f4        0x1 build/obj_files/etharp.o
+ *fill*         0x00000000000200f5        0x3 
+ .sbss          0x00000000000200f8        0x8 build/obj_files/ip4_frag.o
  .sbss.__malloc_max_sbrked_mem
-                0x000000000001fb40        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
-                0x000000000001fb40                __malloc_max_sbrked_mem
+                0x0000000000020100        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+                0x0000000000020100                __malloc_max_sbrked_mem
  .sbss.__malloc_max_total_mem
-                0x000000000001fb44        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
-                0x000000000001fb44                __malloc_max_total_mem
+                0x0000000000020104        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+                0x0000000000020104                __malloc_max_total_mem
  .sbss.__malloc_top_pad
-                0x000000000001fb48        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
-                0x000000000001fb48                __malloc_top_pad
+                0x0000000000020108        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+                0x0000000000020108                __malloc_top_pad
  .sbss.heap_end.1518
-                0x000000000001fb4c        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
+                0x000000000002010c        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
  *(.gnu.linkonce.sb.*)
  *(.bss .bss.*)
- .bss           0x000000000001fb50       0x4c build/obj_files/main.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/mac.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/rtl8211fd_drv.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/lwiperf.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/common.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/ethernetif.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/sockets.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/api_msg.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/err.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/if_api.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/netbuf.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/tcpip.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/netifapi.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/api_lib.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/netdb.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/bridgeif.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/lowpan6_common.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/lowpan6_ble.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/lowpan6.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/zepif.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/bridgeif_fdb.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/ethernet.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/fsm.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/upap.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/demand.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/eui64.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/lcp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/ipcp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/pppos.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/mppe.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/multilink.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/pppcrypt.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/pppoe.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/utils.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/auth.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/chap-new.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/ccp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/ipv6cp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/vj.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/chap-md5.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/ecp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/ppp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/chap_ms.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/pppapi.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/magic.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/pppol2tp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/eap.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/arc4.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/md5.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/md4.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/sha1.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/des.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/tcp_out.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/udp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/altcp_tcp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/def.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/altcp.o
- .bss           0x000000000001fb9c        0x0 build/obj_files/stats.o
- .bss           0x000000000001fb9c       0x4c build/obj_files/netif.o
- .bss           0x000000000001fbe8        0x0 build/obj_files/pbuf.o
- .bss           0x000000000001fbe8       0x10 build/obj_files/tcp_in.o
- .bss           0x000000000001fbf8        0x0 build/obj_files/raw.o
- .bss           0x000000000001fbf8        0x0 build/obj_files/ip.o
- .bss           0x000000000001fbf8        0x0 build/obj_files/dns.o
- .bss           0x000000000001fbf8        0x0 build/obj_files/altcp_alloc.o
- .bss           0x000000000001fbf8        0x0 build/obj_files/timeouts.o
- .bss           0x000000000001fbf8        0x0 build/obj_files/tcp.o
- .bss           0x000000000001fbf8        0x0 build/obj_files/sys.o
- .bss           0x000000000001fbf8       0x8e build/obj_files/memp.o
- .bss           0x000000000001fc86        0x0 build/obj_files/init.o
- .bss           0x000000000001fc86        0x0 build/obj_files/inet_chksum.o
- .bss           0x000000000001fc86        0x0 build/obj_files/mem.o
- .bss           0x000000000001fc86        0x0 build/obj_files/icmp.o
- .bss           0x000000000001fc86        0x0 build/obj_files/autoip.o
- .bss           0x000000000001fc86        0x0 build/obj_files/ip4.o
- .bss           0x000000000001fc86        0x0 build/obj_files/igmp.o
- *fill*         0x000000000001fc86        0x2 
- .bss           0x000000000001fc88       0x10 build/obj_files/ip4_addr.o
- .bss           0x000000000001fc98       0xf0 build/obj_files/etharp.o
- .bss           0x000000000001fd88        0x0 build/obj_files/dhcp.o
- .bss           0x000000000001fd88        0x0 build/obj_files/ip4_frag.o
- .bss           0x000000000001fd88        0x0 build/obj_files/start.o
- .bss           0x000000000001fd88        0x0 build/obj_files/trap.o
- .bss           0x000000000001fd88        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-atoi.o)
- .bss           0x000000000001fd88        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-ctype_.o)
- .bss           0x000000000001fd88        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-init.o)
- .bss           0x000000000001fd88        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-malloc.o)
- .bss           0x000000000001fd88        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+ .bss           0x0000000000020110       0x4c build/obj_files/main.o
+ .bss           0x000000000002015c        0x0 build/obj_files/mac.o
+ .bss           0x000000000002015c        0x0 build/obj_files/rtl8211fd_drv.o
+ .bss           0x000000000002015c        0x0 build/obj_files/lwiperf.o
+ .bss           0x000000000002015c        0x0 build/obj_files/common.o
+ .bss           0x000000000002015c        0x0 build/obj_files/ethernetif.o
+ .bss           0x000000000002015c        0x0 build/obj_files/sockets.o
+ .bss           0x000000000002015c        0x0 build/obj_files/api_msg.o
+ .bss           0x000000000002015c        0x0 build/obj_files/err.o
+ .bss           0x000000000002015c        0x0 build/obj_files/if_api.o
+ .bss           0x000000000002015c        0x0 build/obj_files/netbuf.o
+ .bss           0x000000000002015c        0x0 build/obj_files/tcpip.o
+ .bss           0x000000000002015c        0x0 build/obj_files/netifapi.o
+ .bss           0x000000000002015c        0x0 build/obj_files/api_lib.o
+ .bss           0x000000000002015c        0x0 build/obj_files/netdb.o
+ .bss           0x000000000002015c        0x0 build/obj_files/bridgeif.o
+ .bss           0x000000000002015c        0x0 build/obj_files/lowpan6_common.o
+ .bss           0x000000000002015c        0x0 build/obj_files/lowpan6_ble.o
+ .bss           0x000000000002015c        0x0 build/obj_files/lowpan6.o
+ .bss           0x000000000002015c        0x0 build/obj_files/zepif.o
+ .bss           0x000000000002015c        0x0 build/obj_files/bridgeif_fdb.o
+ .bss           0x000000000002015c        0x0 build/obj_files/ethernet.o
+ .bss           0x000000000002015c        0x0 build/obj_files/fsm.o
+ .bss           0x000000000002015c        0x0 build/obj_files/upap.o
+ .bss           0x000000000002015c        0x0 build/obj_files/demand.o
+ .bss           0x000000000002015c        0x0 build/obj_files/eui64.o
+ .bss           0x000000000002015c        0x0 build/obj_files/lcp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/ipcp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/pppos.o
+ .bss           0x000000000002015c        0x0 build/obj_files/mppe.o
+ .bss           0x000000000002015c        0x0 build/obj_files/multilink.o
+ .bss           0x000000000002015c        0x0 build/obj_files/pppcrypt.o
+ .bss           0x000000000002015c        0x0 build/obj_files/pppoe.o
+ .bss           0x000000000002015c        0x0 build/obj_files/utils.o
+ .bss           0x000000000002015c        0x0 build/obj_files/auth.o
+ .bss           0x000000000002015c        0x0 build/obj_files/chap-new.o
+ .bss           0x000000000002015c        0x0 build/obj_files/ccp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/ipv6cp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/vj.o
+ .bss           0x000000000002015c        0x0 build/obj_files/chap-md5.o
+ .bss           0x000000000002015c        0x0 build/obj_files/ecp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/ppp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/chap_ms.o
+ .bss           0x000000000002015c        0x0 build/obj_files/pppapi.o
+ .bss           0x000000000002015c        0x0 build/obj_files/magic.o
+ .bss           0x000000000002015c        0x0 build/obj_files/pppol2tp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/eap.o
+ .bss           0x000000000002015c        0x0 build/obj_files/arc4.o
+ .bss           0x000000000002015c        0x0 build/obj_files/md5.o
+ .bss           0x000000000002015c        0x0 build/obj_files/md4.o
+ .bss           0x000000000002015c        0x0 build/obj_files/sha1.o
+ .bss           0x000000000002015c        0x0 build/obj_files/des.o
+ .bss           0x000000000002015c        0x0 build/obj_files/tcp_out.o
+ .bss           0x000000000002015c        0x0 build/obj_files/udp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/altcp_tcp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/def.o
+ .bss           0x000000000002015c        0x0 build/obj_files/altcp.o
+ .bss           0x000000000002015c        0x0 build/obj_files/stats.o
+ .bss           0x000000000002015c       0x4c build/obj_files/netif.o
+ .bss           0x00000000000201a8        0x0 build/obj_files/pbuf.o
+ .bss           0x00000000000201a8       0x10 build/obj_files/tcp_in.o
+ .bss           0x00000000000201b8        0x0 build/obj_files/raw.o
+ .bss           0x00000000000201b8        0x0 build/obj_files/ip.o
+ .bss           0x00000000000201b8        0x0 build/obj_files/dns.o
+ .bss           0x00000000000201b8        0x0 build/obj_files/altcp_alloc.o
+ .bss           0x00000000000201b8        0x0 build/obj_files/timeouts.o
+ .bss           0x00000000000201b8        0x0 build/obj_files/tcp.o
+ .bss           0x00000000000201b8        0x0 build/obj_files/sys.o
+ .bss           0x00000000000201b8       0x8e build/obj_files/memp.o
+ .bss           0x0000000000020246        0x0 build/obj_files/init.o
+ .bss           0x0000000000020246        0x0 build/obj_files/inet_chksum.o
+ .bss           0x0000000000020246        0x0 build/obj_files/mem.o
+ .bss           0x0000000000020246        0x0 build/obj_files/icmp.o
+ .bss           0x0000000000020246        0x0 build/obj_files/autoip.o
+ .bss           0x0000000000020246        0x0 build/obj_files/ip4.o
+ .bss           0x0000000000020246        0x0 build/obj_files/igmp.o
+ *fill*         0x0000000000020246        0x2 
+ .bss           0x0000000000020248       0x10 build/obj_files/ip4_addr.o
+ .bss           0x0000000000020258       0xf0 build/obj_files/etharp.o
+ .bss           0x0000000000020348        0x0 build/obj_files/dhcp.o
+ .bss           0x0000000000020348        0x0 build/obj_files/ip4_frag.o
+ .bss           0x0000000000020348        0x0 build/obj_files/start.o
+ .bss           0x0000000000020348        0x0 build/obj_files/trap.o
+ .bss           0x0000000000020348        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-atoi.o)
+ .bss           0x0000000000020348        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-ctype_.o)
+ .bss           0x0000000000020348        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-init.o)
+ .bss           0x0000000000020348        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-malloc.o)
+ .bss           0x0000000000020348        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
  .bss.__malloc_current_mallinfo
-                0x000000000001fd88       0x28 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
-                0x000000000001fd88                __malloc_current_mallinfo
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcmp.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcpy.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memmove-stub.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memset.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mlock.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-rand.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-sbrkr.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strlen.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strncmp.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strtol.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-freer.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-reent.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
- .bss           0x000000000001fdb0        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
+                0x0000000000020348       0x28 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mallocr.o)
+                0x0000000000020348                __malloc_current_mallinfo
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcmp.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memcpy.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memmove-stub.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-memset.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-mlock.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-rand.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-sbrkr.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strlen.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strncmp.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-strtol.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-freer.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-impure.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-reent.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_udivdi3.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(addsf3.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(gesf2.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(lesf2.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(mulsf3.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(subsf3.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(floatunsisf.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clz.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a(_clzsi2.o)
+ .bss           0x0000000000020370        0x0 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libnosys.a(sbrk.o)
  *(.gnu.linkonce.b.*)
  *(COMMON)
- COMMON         0x000000000001fdb0        0x8 build/obj_files/main.o
-                0x000000000001fdb0                cmn_reset
-                0x000000000001fdb4                cur_des
- *fill*         0x000000000001fdb8        0x8 
- COMMON         0x000000000001fdc0     0x2000 build/obj_files/ethernetif.o
-                0x000000000001fdc0                descriptors0
- COMMON         0x0000000000021dc0      0x114 build/obj_files/stats.o
-                0x0000000000021dc0                lwip_stats
- COMMON         0x0000000000021ed4        0x8 build/obj_files/netif.o
-                0x0000000000021ed4                netif_list
-                0x0000000000021ed8                netif_default
- COMMON         0x0000000000021edc        0x1 build/obj_files/pbuf.o
-                0x0000000000021edc                pbuf_free_ooseq_pending
- *fill*         0x0000000000021edd        0x3 
- COMMON         0x0000000000021ee0        0x4 build/obj_files/tcp_in.o
-                0x0000000000021ee0                tcp_input_pcb
- COMMON         0x0000000000021ee4       0x18 build/obj_files/ip.o
-                0x0000000000021ee4                ip_data
- COMMON         0x0000000000021efc       0x18 build/obj_files/tcp.o
-                0x0000000000021efc                tcp_active_pcbs_changed
-                0x0000000000021f00                tcp_active_pcbs
-                0x0000000000021f04                tcp_ticks
-                0x0000000000021f08                tcp_listen_pcbs
-                0x0000000000021f0c                tcp_bound_pcbs
-                0x0000000000021f10                tcp_tw_pcbs
- COMMON         0x0000000000021f14     0x2013 build/obj_files/mem.o
-                0x0000000000021f14                ram_heap
- *fill*         0x0000000000023f27        0x1 
- COMMON         0x0000000000023f28        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-reent.o)
-                0x0000000000023f28                errno
-                0x0000000000023f2c                . = ALIGN (0x4)
-                0x0000000000023f30                . = ALIGN (0x8)
-                0x0000000000023f30                PROVIDE (_end = .)
-                0x0000000000023f30                PROVIDE (end = .)
+ COMMON         0x0000000000020370        0x8 build/obj_files/main.o
+                0x0000000000020370                cmn_reset
+                0x0000000000020374                cur_des
+ *fill*         0x0000000000020378        0x8 
+ COMMON         0x0000000000020380     0x2000 build/obj_files/ethernetif.o
+                0x0000000000020380                descriptors0
+ COMMON         0x0000000000022380      0x114 build/obj_files/stats.o
+                0x0000000000022380                lwip_stats
+ COMMON         0x0000000000022494        0x8 build/obj_files/netif.o
+                0x0000000000022494                netif_list
+                0x0000000000022498                netif_default
+ COMMON         0x000000000002249c        0x1 build/obj_files/pbuf.o
+                0x000000000002249c                pbuf_free_ooseq_pending
+ *fill*         0x000000000002249d        0x3 
+ COMMON         0x00000000000224a0        0x4 build/obj_files/tcp_in.o
+                0x00000000000224a0                tcp_input_pcb
+ COMMON         0x00000000000224a4       0x18 build/obj_files/ip.o
+                0x00000000000224a4                ip_data
+ COMMON         0x00000000000224bc       0x18 build/obj_files/tcp.o
+                0x00000000000224bc                tcp_active_pcbs_changed
+                0x00000000000224c0                tcp_active_pcbs
+                0x00000000000224c4                tcp_ticks
+                0x00000000000224c8                tcp_listen_pcbs
+                0x00000000000224cc                tcp_bound_pcbs
+                0x00000000000224d0                tcp_tw_pcbs
+ COMMON         0x00000000000224d4     0x2013 build/obj_files/mem.o
+                0x00000000000224d4                ram_heap
+ *fill*         0x00000000000244e7        0x1 
+ COMMON         0x00000000000244e8        0x4 c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libc.a(lib_a-reent.o)
+                0x00000000000244e8                errno
+                0x00000000000244ec                . = ALIGN (0x4)
+                0x00000000000244f0                . = ALIGN (0x8)
+                0x00000000000244f0                PROVIDE (_end = .)
+                0x00000000000244f0                PROVIDE (end = .)
 
-.stack          0x0000000000023f30     0x1000
+.stack          0x00000000000244f0     0x1000
                 [!provide]                        PROVIDE (_heap_end = .)
                 0x0000000000001000                . = __stack_size
- *fill*         0x0000000000023f30     0x1000 
-                0x0000000000024f30                PROVIDE (_sp = .)
-                0x0000000000024f30                __freertos_irq_stack_top = .
+ *fill*         0x00000000000244f0     0x1000 
+                0x00000000000254f0                PROVIDE (_sp = .)
+                0x00000000000254f0                __freertos_irq_stack_top = .
 LOAD c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/../../../../riscv-none-embed/lib/rv32im/ilp32\libm.a
 LOAD c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-embed/8.3.0/rv32im/ilp32\libgcc.a
 START GROUP
@@ -13023,89 +13035,89 @@ LOAD c:/efinity/efinity-riscv-ide-2024.2/toolchain/bin/../lib/gcc/riscv-none-emb
 END GROUP
 OUTPUT(build/lwip_iperf.elf elf32-littleriscv)
 
-.debug_info     0x0000000000000000    0x5e124
- .debug_info    0x0000000000000000     0x2e64 build/obj_files/main.o
- .debug_info    0x0000000000002e64     0x14ae build/obj_files/mac.o
- .debug_info    0x0000000000004312     0x1357 build/obj_files/rtl8211fd_drv.o
- .debug_info    0x0000000000005669     0x3357 build/obj_files/lwiperf.o
- .debug_info    0x00000000000089c0      0xa60 build/obj_files/common.o
- .debug_info    0x0000000000009420     0x20fb build/obj_files/ethernetif.o
- .debug_info    0x000000000000b51b      0x9a9 build/obj_files/sockets.o
- .debug_info    0x000000000000bec4      0x9a9 build/obj_files/api_msg.o
- .debug_info    0x000000000000c86d      0x9d6 build/obj_files/err.o
- .debug_info    0x000000000000d243      0x9a9 build/obj_files/if_api.o
- .debug_info    0x000000000000dbec      0x9a9 build/obj_files/netbuf.o
- .debug_info    0x000000000000e595      0x9a9 build/obj_files/tcpip.o
- .debug_info    0x000000000000ef3e      0x9a9 build/obj_files/netifapi.o
- .debug_info    0x000000000000f8e7      0x9a9 build/obj_files/api_lib.o
- .debug_info    0x0000000000010290      0x9a9 build/obj_files/netdb.o
- .debug_info    0x0000000000010c39     0x114a build/obj_files/bridgeif.o
- .debug_info    0x0000000000011d83      0x9a9 build/obj_files/lowpan6_common.o
- .debug_info    0x000000000001272c      0x9a9 build/obj_files/lowpan6_ble.o
- .debug_info    0x00000000000130d5      0x9a9 build/obj_files/lowpan6.o
- .debug_info    0x0000000000013a7e      0x9a9 build/obj_files/zepif.o
- .debug_info    0x0000000000014427     0x124f build/obj_files/bridgeif_fdb.o
- .debug_info    0x0000000000015676     0x1a4d build/obj_files/ethernet.o
- .debug_info    0x00000000000170c3      0x9a9 build/obj_files/fsm.o
- .debug_info    0x0000000000017a6c      0x9a9 build/obj_files/upap.o
- .debug_info    0x0000000000018415      0x9a9 build/obj_files/demand.o
- .debug_info    0x0000000000018dbe      0x9a9 build/obj_files/eui64.o
- .debug_info    0x0000000000019767      0x9a9 build/obj_files/lcp.o
- .debug_info    0x000000000001a110      0x9a9 build/obj_files/ipcp.o
- .debug_info    0x000000000001aab9      0x9a9 build/obj_files/pppos.o
- .debug_info    0x000000000001b462      0x9a9 build/obj_files/mppe.o
- .debug_info    0x000000000001be0b      0x9a9 build/obj_files/multilink.o
- .debug_info    0x000000000001c7b4      0x9a9 build/obj_files/pppcrypt.o
- .debug_info    0x000000000001d15d      0x9a9 build/obj_files/pppoe.o
- .debug_info    0x000000000001db06      0x9a9 build/obj_files/utils.o
- .debug_info    0x000000000001e4af      0x9a9 build/obj_files/auth.o
- .debug_info    0x000000000001ee58      0x9a9 build/obj_files/chap-new.o
- .debug_info    0x000000000001f801      0x9a9 build/obj_files/ccp.o
- .debug_info    0x00000000000201aa      0x9a9 build/obj_files/ipv6cp.o
- .debug_info    0x0000000000020b53      0x9a9 build/obj_files/vj.o
- .debug_info    0x00000000000214fc      0x9a9 build/obj_files/chap-md5.o
- .debug_info    0x0000000000021ea5      0x9a9 build/obj_files/ecp.o
- .debug_info    0x000000000002284e      0x9a9 build/obj_files/ppp.o
- .debug_info    0x00000000000231f7      0x9a9 build/obj_files/chap_ms.o
- .debug_info    0x0000000000023ba0      0x9a9 build/obj_files/pppapi.o
- .debug_info    0x0000000000024549      0x9a9 build/obj_files/magic.o
- .debug_info    0x0000000000024ef2      0x9a9 build/obj_files/pppol2tp.o
- .debug_info    0x000000000002589b      0x9a9 build/obj_files/eap.o
- .debug_info    0x0000000000026244      0x9a9 build/obj_files/arc4.o
- .debug_info    0x0000000000026bed      0x9a9 build/obj_files/md5.o
- .debug_info    0x0000000000027596      0x9a9 build/obj_files/md4.o
- .debug_info    0x0000000000027f3f      0x9a9 build/obj_files/sha1.o
- .debug_info    0x00000000000288e8      0x9a9 build/obj_files/des.o
- .debug_info    0x0000000000029291     0x3b76 build/obj_files/tcp_out.o
- .debug_info    0x000000000002ce07      0x9a9 build/obj_files/udp.o
- .debug_info    0x000000000002d7b0     0x348f build/obj_files/altcp_tcp.o
- .debug_info    0x0000000000030c3f      0xcdc build/obj_files/def.o
- .debug_info    0x000000000003191b     0x2636 build/obj_files/altcp.o
- .debug_info    0x0000000000033f51      0xda3 build/obj_files/stats.o
- .debug_info    0x0000000000034cf4     0x3399 build/obj_files/netif.o
- .debug_info    0x000000000003808d     0x34c2 build/obj_files/pbuf.o
- .debug_info    0x000000000003b54f     0x325e build/obj_files/tcp_in.o
- .debug_info    0x000000000003e7ad     0x1f8a build/obj_files/raw.o
- .debug_info    0x0000000000040737     0x1298 build/obj_files/ip.o
- .debug_info    0x00000000000419cf      0x9a9 build/obj_files/dns.o
- .debug_info    0x0000000000042378      0xa56 build/obj_files/altcp_alloc.o
- .debug_info    0x0000000000042dce     0x2331 build/obj_files/timeouts.o
- .debug_info    0x00000000000450ff     0x3c88 build/obj_files/tcp.o
- .debug_info    0x0000000000048d87      0x9a9 build/obj_files/sys.o
- .debug_info    0x0000000000049730     0x2276 build/obj_files/memp.o
- .debug_info    0x000000000004b9a6     0x1a3b build/obj_files/init.o
- .debug_info    0x000000000004d3e1     0x149a build/obj_files/inet_chksum.o
- .debug_info    0x000000000004e87b     0x1950 build/obj_files/mem.o
- .debug_info    0x00000000000501cb     0x1cce build/obj_files/icmp.o
- .debug_info    0x0000000000051e99      0x9a9 build/obj_files/autoip.o
- .debug_info    0x0000000000052842     0x281c build/obj_files/ip4.o
- .debug_info    0x000000000005505e     0x21e9 build/obj_files/igmp.o
- .debug_info    0x0000000000057247     0x188f build/obj_files/ip4_addr.o
- .debug_info    0x0000000000058ad6     0x2724 build/obj_files/etharp.o
- .debug_info    0x000000000005b1fa      0x9a9 build/obj_files/dhcp.o
- .debug_info    0x000000000005bba3     0x2535 build/obj_files/ip4_frag.o
- .debug_info    0x000000000005e0d8       0x26 build/obj_files/start.o
- .debug_info    0x000000000005e0fe       0x26 build/obj_files/trap.o
+.debug_info     0x0000000000000000    0x5e1a5
+ .debug_info    0x0000000000000000     0x2ee5 build/obj_files/main.o
+ .debug_info    0x0000000000002ee5     0x14ae build/obj_files/mac.o
+ .debug_info    0x0000000000004393     0x1357 build/obj_files/rtl8211fd_drv.o
+ .debug_info    0x00000000000056ea     0x3357 build/obj_files/lwiperf.o
+ .debug_info    0x0000000000008a41      0xa60 build/obj_files/common.o
+ .debug_info    0x00000000000094a1     0x20fb build/obj_files/ethernetif.o
+ .debug_info    0x000000000000b59c      0x9a9 build/obj_files/sockets.o
+ .debug_info    0x000000000000bf45      0x9a9 build/obj_files/api_msg.o
+ .debug_info    0x000000000000c8ee      0x9d6 build/obj_files/err.o
+ .debug_info    0x000000000000d2c4      0x9a9 build/obj_files/if_api.o
+ .debug_info    0x000000000000dc6d      0x9a9 build/obj_files/netbuf.o
+ .debug_info    0x000000000000e616      0x9a9 build/obj_files/tcpip.o
+ .debug_info    0x000000000000efbf      0x9a9 build/obj_files/netifapi.o
+ .debug_info    0x000000000000f968      0x9a9 build/obj_files/api_lib.o
+ .debug_info    0x0000000000010311      0x9a9 build/obj_files/netdb.o
+ .debug_info    0x0000000000010cba     0x114a build/obj_files/bridgeif.o
+ .debug_info    0x0000000000011e04      0x9a9 build/obj_files/lowpan6_common.o
+ .debug_info    0x00000000000127ad      0x9a9 build/obj_files/lowpan6_ble.o
+ .debug_info    0x0000000000013156      0x9a9 build/obj_files/lowpan6.o
+ .debug_info    0x0000000000013aff      0x9a9 build/obj_files/zepif.o
+ .debug_info    0x00000000000144a8     0x124f build/obj_files/bridgeif_fdb.o
+ .debug_info    0x00000000000156f7     0x1a4d build/obj_files/ethernet.o
+ .debug_info    0x0000000000017144      0x9a9 build/obj_files/fsm.o
+ .debug_info    0x0000000000017aed      0x9a9 build/obj_files/upap.o
+ .debug_info    0x0000000000018496      0x9a9 build/obj_files/demand.o
+ .debug_info    0x0000000000018e3f      0x9a9 build/obj_files/eui64.o
+ .debug_info    0x00000000000197e8      0x9a9 build/obj_files/lcp.o
+ .debug_info    0x000000000001a191      0x9a9 build/obj_files/ipcp.o
+ .debug_info    0x000000000001ab3a      0x9a9 build/obj_files/pppos.o
+ .debug_info    0x000000000001b4e3      0x9a9 build/obj_files/mppe.o
+ .debug_info    0x000000000001be8c      0x9a9 build/obj_files/multilink.o
+ .debug_info    0x000000000001c835      0x9a9 build/obj_files/pppcrypt.o
+ .debug_info    0x000000000001d1de      0x9a9 build/obj_files/pppoe.o
+ .debug_info    0x000000000001db87      0x9a9 build/obj_files/utils.o
+ .debug_info    0x000000000001e530      0x9a9 build/obj_files/auth.o
+ .debug_info    0x000000000001eed9      0x9a9 build/obj_files/chap-new.o
+ .debug_info    0x000000000001f882      0x9a9 build/obj_files/ccp.o
+ .debug_info    0x000000000002022b      0x9a9 build/obj_files/ipv6cp.o
+ .debug_info    0x0000000000020bd4      0x9a9 build/obj_files/vj.o
+ .debug_info    0x000000000002157d      0x9a9 build/obj_files/chap-md5.o
+ .debug_info    0x0000000000021f26      0x9a9 build/obj_files/ecp.o
+ .debug_info    0x00000000000228cf      0x9a9 build/obj_files/ppp.o
+ .debug_info    0x0000000000023278      0x9a9 build/obj_files/chap_ms.o
+ .debug_info    0x0000000000023c21      0x9a9 build/obj_files/pppapi.o
+ .debug_info    0x00000000000245ca      0x9a9 build/obj_files/magic.o
+ .debug_info    0x0000000000024f73      0x9a9 build/obj_files/pppol2tp.o
+ .debug_info    0x000000000002591c      0x9a9 build/obj_files/eap.o
+ .debug_info    0x00000000000262c5      0x9a9 build/obj_files/arc4.o
+ .debug_info    0x0000000000026c6e      0x9a9 build/obj_files/md5.o
+ .debug_info    0x0000000000027617      0x9a9 build/obj_files/md4.o
+ .debug_info    0x0000000000027fc0      0x9a9 build/obj_files/sha1.o
+ .debug_info    0x0000000000028969      0x9a9 build/obj_files/des.o
+ .debug_info    0x0000000000029312     0x3b76 build/obj_files/tcp_out.o
+ .debug_info    0x000000000002ce88      0x9a9 build/obj_files/udp.o
+ .debug_info    0x000000000002d831     0x348f build/obj_files/altcp_tcp.o
+ .debug_info    0x0000000000030cc0      0xcdc build/obj_files/def.o
+ .debug_info    0x000000000003199c     0x2636 build/obj_files/altcp.o
+ .debug_info    0x0000000000033fd2      0xda3 build/obj_files/stats.o
+ .debug_info    0x0000000000034d75     0x3399 build/obj_files/netif.o
+ .debug_info    0x000000000003810e     0x34c2 build/obj_files/pbuf.o
+ .debug_info    0x000000000003b5d0     0x325e build/obj_files/tcp_in.o
+ .debug_info    0x000000000003e82e     0x1f8a build/obj_files/raw.o
+ .debug_info    0x00000000000407b8     0x1298 build/obj_files/ip.o
+ .debug_info    0x0000000000041a50      0x9a9 build/obj_files/dns.o
+ .debug_info    0x00000000000423f9      0xa56 build/obj_files/altcp_alloc.o
+ .debug_info    0x0000000000042e4f     0x2331 build/obj_files/timeouts.o
+ .debug_info    0x0000000000045180     0x3c88 build/obj_files/tcp.o
+ .debug_info    0x0000000000048e08      0x9a9 build/obj_files/sys.o
+ .debug_info    0x00000000000497b1     0x2276 build/obj_files/memp.o
+ .debug_info    0x000000000004ba27     0x1a3b build/obj_files/init.o
+ .debug_info    0x000000000004d462     0x149a build/obj_files/inet_chksum.o
+ .debug_info    0x000000000004e8fc     0x1950 build/obj_files/mem.o
+ .debug_info    0x000000000005024c     0x1cce build/obj_files/icmp.o
+ .debug_info    0x0000000000051f1a      0x9a9 build/obj_files/autoip.o
+ .debug_info    0x00000000000528c3     0x281c build/obj_files/ip4.o
+ .debug_info    0x00000000000550df     0x21e9 build/obj_files/igmp.o
+ .debug_info    0x00000000000572c8     0x188f build/obj_files/ip4_addr.o
+ .debug_info    0x0000000000058b57     0x2724 build/obj_files/etharp.o
+ .debug_info    0x000000000005b27b      0x9a9 build/obj_files/dhcp.o
+ .debug_info    0x000000000005bc24     0x2535 build/obj_files/ip4_frag.o
+ .debug_info    0x000000000005e159       0x26 build/obj_files/start.o
+ .debug_info    0x000000000005e17f       0x26 build/obj_files/trap.o
 
 .debug_abbrev   0x0000000000000000     0xe05f
  .debug_abbrev  0x0000000000000000      0x570 build/obj_files/main.o
@@ -13191,35 +13203,35 @@ OUTPUT(build/lwip_iperf.elf elf32-littleriscv)
  .debug_abbrev  0x000000000000e037       0x14 build/obj_files/start.o
  .debug_abbrev  0x000000000000e04b       0x14 build/obj_files/trap.o
 
-.debug_loc      0x0000000000000000    0x16e52
- .debug_loc     0x0000000000000000      0xe0d build/obj_files/main.o
- .debug_loc     0x0000000000000e0d      0x684 build/obj_files/mac.o
- .debug_loc     0x0000000000001491      0x49c build/obj_files/rtl8211fd_drv.o
- .debug_loc     0x000000000000192d     0x1513 build/obj_files/lwiperf.o
- .debug_loc     0x0000000000002e40       0x5a build/obj_files/common.o
- .debug_loc     0x0000000000002e9a      0xa67 build/obj_files/ethernetif.o
- .debug_loc     0x0000000000003901      0x5f2 build/obj_files/bridgeif_fdb.o
- .debug_loc     0x0000000000003ef3      0x48b build/obj_files/ethernet.o
- .debug_loc     0x000000000000437e     0x23de build/obj_files/tcp_out.o
- .debug_loc     0x000000000000675c     0x152c build/obj_files/altcp_tcp.o
- .debug_loc     0x0000000000007c88      0x4bb build/obj_files/def.o
- .debug_loc     0x0000000000008143     0x115b build/obj_files/altcp.o
- .debug_loc     0x000000000000929e     0x141c build/obj_files/netif.o
- .debug_loc     0x000000000000a6ba     0x2006 build/obj_files/pbuf.o
- .debug_loc     0x000000000000c6c0      0xca6 build/obj_files/tcp_in.o
- .debug_loc     0x000000000000d366      0xb3d build/obj_files/raw.o
- .debug_loc     0x000000000000dea3      0x6d3 build/obj_files/timeouts.o
- .debug_loc     0x000000000000e576     0x1feb build/obj_files/tcp.o
- .debug_loc     0x0000000000010561      0x500 build/obj_files/memp.o
- .debug_loc     0x0000000000010a61       0x14 build/obj_files/init.o
- .debug_loc     0x0000000000010a75      0xad6 build/obj_files/inet_chksum.o
- .debug_loc     0x000000000001154b      0x8ad build/obj_files/mem.o
- .debug_loc     0x0000000000011df8      0x5cc build/obj_files/icmp.o
- .debug_loc     0x00000000000123c4      0xd0f build/obj_files/ip4.o
- .debug_loc     0x00000000000130d3      0xd74 build/obj_files/igmp.o
- .debug_loc     0x0000000000013e47      0x726 build/obj_files/ip4_addr.o
- .debug_loc     0x000000000001456d     0x16af build/obj_files/etharp.o
- .debug_loc     0x0000000000015c1c     0x1236 build/obj_files/ip4_frag.o
+.debug_loc      0x0000000000000000    0x16ee1
+ .debug_loc     0x0000000000000000      0xe9c build/obj_files/main.o
+ .debug_loc     0x0000000000000e9c      0x684 build/obj_files/mac.o
+ .debug_loc     0x0000000000001520      0x49c build/obj_files/rtl8211fd_drv.o
+ .debug_loc     0x00000000000019bc     0x1513 build/obj_files/lwiperf.o
+ .debug_loc     0x0000000000002ecf       0x5a build/obj_files/common.o
+ .debug_loc     0x0000000000002f29      0xa67 build/obj_files/ethernetif.o
+ .debug_loc     0x0000000000003990      0x5f2 build/obj_files/bridgeif_fdb.o
+ .debug_loc     0x0000000000003f82      0x48b build/obj_files/ethernet.o
+ .debug_loc     0x000000000000440d     0x23de build/obj_files/tcp_out.o
+ .debug_loc     0x00000000000067eb     0x152c build/obj_files/altcp_tcp.o
+ .debug_loc     0x0000000000007d17      0x4bb build/obj_files/def.o
+ .debug_loc     0x00000000000081d2     0x115b build/obj_files/altcp.o
+ .debug_loc     0x000000000000932d     0x141c build/obj_files/netif.o
+ .debug_loc     0x000000000000a749     0x2006 build/obj_files/pbuf.o
+ .debug_loc     0x000000000000c74f      0xca6 build/obj_files/tcp_in.o
+ .debug_loc     0x000000000000d3f5      0xb3d build/obj_files/raw.o
+ .debug_loc     0x000000000000df32      0x6d3 build/obj_files/timeouts.o
+ .debug_loc     0x000000000000e605     0x1feb build/obj_files/tcp.o
+ .debug_loc     0x00000000000105f0      0x500 build/obj_files/memp.o
+ .debug_loc     0x0000000000010af0       0x14 build/obj_files/init.o
+ .debug_loc     0x0000000000010b04      0xad6 build/obj_files/inet_chksum.o
+ .debug_loc     0x00000000000115da      0x8ad build/obj_files/mem.o
+ .debug_loc     0x0000000000011e87      0x5cc build/obj_files/icmp.o
+ .debug_loc     0x0000000000012453      0xd0f build/obj_files/ip4.o
+ .debug_loc     0x0000000000013162      0xd74 build/obj_files/igmp.o
+ .debug_loc     0x0000000000013ed6      0x726 build/obj_files/ip4_addr.o
+ .debug_loc     0x00000000000145fc     0x16af build/obj_files/etharp.o
+ .debug_loc     0x0000000000015cab     0x1236 build/obj_files/ip4_frag.o
 
 .debug_aranges  0x0000000000000000      0x8a8
  .debug_aranges
@@ -13631,89 +13643,89 @@ OUTPUT(build/lwip_iperf.elf elf32-littleriscv)
  .debug_macro   0x00000000000181d8      0x4ae build/obj_files/ip4_frag.o
  .debug_macro   0x0000000000018686       0x10 build/obj_files/ip4_frag.o
 
-.debug_line     0x0000000000000000    0x40c67
- .debug_line    0x0000000000000000     0x1d6f build/obj_files/main.o
- .debug_line    0x0000000000001d6f      0xcc5 build/obj_files/mac.o
- .debug_line    0x0000000000002a34      0xbd6 build/obj_files/rtl8211fd_drv.o
- .debug_line    0x000000000000360a     0x225f build/obj_files/lwiperf.o
- .debug_line    0x0000000000005869      0x3c1 build/obj_files/common.o
- .debug_line    0x0000000000005c2a     0x1503 build/obj_files/ethernetif.o
- .debug_line    0x000000000000712d      0x534 build/obj_files/sockets.o
- .debug_line    0x0000000000007661      0x534 build/obj_files/api_msg.o
- .debug_line    0x0000000000007b95      0x56c build/obj_files/err.o
- .debug_line    0x0000000000008101      0x533 build/obj_files/if_api.o
- .debug_line    0x0000000000008634      0x533 build/obj_files/netbuf.o
- .debug_line    0x0000000000008b67      0x532 build/obj_files/tcpip.o
- .debug_line    0x0000000000009099      0x535 build/obj_files/netifapi.o
- .debug_line    0x00000000000095ce      0x534 build/obj_files/api_lib.o
- .debug_line    0x0000000000009b02      0x53d build/obj_files/netdb.o
- .debug_line    0x000000000000a03f      0x69e build/obj_files/bridgeif.o
- .debug_line    0x000000000000a6dd      0x575 build/obj_files/lowpan6_common.o
- .debug_line    0x000000000000ac52      0x56f build/obj_files/lowpan6_ble.o
- .debug_line    0x000000000000b1c1      0x567 build/obj_files/lowpan6.o
- .debug_line    0x000000000000b728      0x570 build/obj_files/zepif.o
- .debug_line    0x000000000000bc98     0x1029 build/obj_files/bridgeif_fdb.o
- .debug_line    0x000000000000ccc1      0xeb7 build/obj_files/ethernet.o
- .debug_line    0x000000000000db78      0x55a build/obj_files/fsm.o
- .debug_line    0x000000000000e0d2      0x55b build/obj_files/upap.o
- .debug_line    0x000000000000e62d      0x55d build/obj_files/demand.o
- .debug_line    0x000000000000eb8a      0x55c build/obj_files/eui64.o
- .debug_line    0x000000000000f0e6      0x55a build/obj_files/lcp.o
- .debug_line    0x000000000000f640      0x55b build/obj_files/ipcp.o
- .debug_line    0x000000000000fb9b      0x55c build/obj_files/pppos.o
- .debug_line    0x00000000000100f7      0x55b build/obj_files/mppe.o
- .debug_line    0x0000000000010652      0x560 build/obj_files/multilink.o
- .debug_line    0x0000000000010bb2      0x55f build/obj_files/pppcrypt.o
- .debug_line    0x0000000000011111      0x55c build/obj_files/pppoe.o
- .debug_line    0x000000000001166d      0x55c build/obj_files/utils.o
- .debug_line    0x0000000000011bc9      0x55b build/obj_files/auth.o
- .debug_line    0x0000000000012124      0x55f build/obj_files/chap-new.o
- .debug_line    0x0000000000012683      0x55a build/obj_files/ccp.o
- .debug_line    0x0000000000012bdd      0x55d build/obj_files/ipv6cp.o
- .debug_line    0x000000000001313a      0x559 build/obj_files/vj.o
- .debug_line    0x0000000000013693      0x55f build/obj_files/chap-md5.o
- .debug_line    0x0000000000013bf2      0x55a build/obj_files/ecp.o
- .debug_line    0x000000000001414c      0x55a build/obj_files/ppp.o
- .debug_line    0x00000000000146a6      0x55e build/obj_files/chap_ms.o
- .debug_line    0x0000000000014c04      0x55d build/obj_files/pppapi.o
- .debug_line    0x0000000000015161      0x55c build/obj_files/magic.o
- .debug_line    0x00000000000156bd      0x55f build/obj_files/pppol2tp.o
- .debug_line    0x0000000000015c1c      0x55a build/obj_files/eap.o
- .debug_line    0x0000000000016176      0x564 build/obj_files/arc4.o
- .debug_line    0x00000000000166da      0x563 build/obj_files/md5.o
- .debug_line    0x0000000000016c3d      0x563 build/obj_files/md4.o
- .debug_line    0x00000000000171a0      0x564 build/obj_files/sha1.o
- .debug_line    0x0000000000017704      0x563 build/obj_files/des.o
- .debug_line    0x0000000000017c67     0x3aa7 build/obj_files/tcp_out.o
- .debug_line    0x000000000001b70e      0x531 build/obj_files/udp.o
- .debug_line    0x000000000001bc3f     0x1f49 build/obj_files/altcp_tcp.o
- .debug_line    0x000000000001db88      0xa16 build/obj_files/def.o
- .debug_line    0x000000000001e59e     0x1851 build/obj_files/altcp.o
- .debug_line    0x000000000001fdef      0x5b3 build/obj_files/stats.o
- .debug_line    0x00000000000203a2     0x2625 build/obj_files/netif.o
- .debug_line    0x00000000000229c7     0x2aa1 build/obj_files/pbuf.o
- .debug_line    0x0000000000025468     0x438a build/obj_files/tcp_in.o
- .debug_line    0x00000000000297f2     0x163f build/obj_files/raw.o
- .debug_line    0x000000000002ae31      0x620 build/obj_files/ip.o
- .debug_line    0x000000000002b451      0x531 build/obj_files/dns.o
- .debug_line    0x000000000002b982      0x5e3 build/obj_files/altcp_alloc.o
- .debug_line    0x000000000002bf65     0x1369 build/obj_files/timeouts.o
- .debug_line    0x000000000002d2ce     0x43c3 build/obj_files/tcp.o
- .debug_line    0x0000000000031691      0x53a build/obj_files/sys.o
- .debug_line    0x0000000000031bcb     0x1026 build/obj_files/memp.o
- .debug_line    0x0000000000032bf1      0x7c4 build/obj_files/init.o
- .debug_line    0x00000000000333b5     0x12c4 build/obj_files/inet_chksum.o
- .debug_line    0x0000000000034679     0x1a99 build/obj_files/mem.o
- .debug_line    0x0000000000036112     0x1199 build/obj_files/icmp.o
- .debug_line    0x00000000000372ab      0x539 build/obj_files/autoip.o
- .debug_line    0x00000000000377e4     0x1ab8 build/obj_files/ip4.o
- .debug_line    0x000000000003929c     0x1cc5 build/obj_files/igmp.o
- .debug_line    0x000000000003af61     0x136d build/obj_files/ip4_addr.o
- .debug_line    0x000000000003c2ce     0x2195 build/obj_files/etharp.o
- .debug_line    0x000000000003e463      0x537 build/obj_files/dhcp.o
- .debug_line    0x000000000003e99a     0x2102 build/obj_files/ip4_frag.o
- .debug_line    0x0000000000040a9c       0xba build/obj_files/start.o
- .debug_line    0x0000000000040b56      0x111 build/obj_files/trap.o
+.debug_line     0x0000000000000000    0x40d26
+ .debug_line    0x0000000000000000     0x1e2e build/obj_files/main.o
+ .debug_line    0x0000000000001e2e      0xcc5 build/obj_files/mac.o
+ .debug_line    0x0000000000002af3      0xbd6 build/obj_files/rtl8211fd_drv.o
+ .debug_line    0x00000000000036c9     0x225f build/obj_files/lwiperf.o
+ .debug_line    0x0000000000005928      0x3c1 build/obj_files/common.o
+ .debug_line    0x0000000000005ce9     0x1503 build/obj_files/ethernetif.o
+ .debug_line    0x00000000000071ec      0x534 build/obj_files/sockets.o
+ .debug_line    0x0000000000007720      0x534 build/obj_files/api_msg.o
+ .debug_line    0x0000000000007c54      0x56c build/obj_files/err.o
+ .debug_line    0x00000000000081c0      0x533 build/obj_files/if_api.o
+ .debug_line    0x00000000000086f3      0x533 build/obj_files/netbuf.o
+ .debug_line    0x0000000000008c26      0x532 build/obj_files/tcpip.o
+ .debug_line    0x0000000000009158      0x535 build/obj_files/netifapi.o
+ .debug_line    0x000000000000968d      0x534 build/obj_files/api_lib.o
+ .debug_line    0x0000000000009bc1      0x53d build/obj_files/netdb.o
+ .debug_line    0x000000000000a0fe      0x69e build/obj_files/bridgeif.o
+ .debug_line    0x000000000000a79c      0x575 build/obj_files/lowpan6_common.o
+ .debug_line    0x000000000000ad11      0x56f build/obj_files/lowpan6_ble.o
+ .debug_line    0x000000000000b280      0x567 build/obj_files/lowpan6.o
+ .debug_line    0x000000000000b7e7      0x570 build/obj_files/zepif.o
+ .debug_line    0x000000000000bd57     0x1029 build/obj_files/bridgeif_fdb.o
+ .debug_line    0x000000000000cd80      0xeb7 build/obj_files/ethernet.o
+ .debug_line    0x000000000000dc37      0x55a build/obj_files/fsm.o
+ .debug_line    0x000000000000e191      0x55b build/obj_files/upap.o
+ .debug_line    0x000000000000e6ec      0x55d build/obj_files/demand.o
+ .debug_line    0x000000000000ec49      0x55c build/obj_files/eui64.o
+ .debug_line    0x000000000000f1a5      0x55a build/obj_files/lcp.o
+ .debug_line    0x000000000000f6ff      0x55b build/obj_files/ipcp.o
+ .debug_line    0x000000000000fc5a      0x55c build/obj_files/pppos.o
+ .debug_line    0x00000000000101b6      0x55b build/obj_files/mppe.o
+ .debug_line    0x0000000000010711      0x560 build/obj_files/multilink.o
+ .debug_line    0x0000000000010c71      0x55f build/obj_files/pppcrypt.o
+ .debug_line    0x00000000000111d0      0x55c build/obj_files/pppoe.o
+ .debug_line    0x000000000001172c      0x55c build/obj_files/utils.o
+ .debug_line    0x0000000000011c88      0x55b build/obj_files/auth.o
+ .debug_line    0x00000000000121e3      0x55f build/obj_files/chap-new.o
+ .debug_line    0x0000000000012742      0x55a build/obj_files/ccp.o
+ .debug_line    0x0000000000012c9c      0x55d build/obj_files/ipv6cp.o
+ .debug_line    0x00000000000131f9      0x559 build/obj_files/vj.o
+ .debug_line    0x0000000000013752      0x55f build/obj_files/chap-md5.o
+ .debug_line    0x0000000000013cb1      0x55a build/obj_files/ecp.o
+ .debug_line    0x000000000001420b      0x55a build/obj_files/ppp.o
+ .debug_line    0x0000000000014765      0x55e build/obj_files/chap_ms.o
+ .debug_line    0x0000000000014cc3      0x55d build/obj_files/pppapi.o
+ .debug_line    0x0000000000015220      0x55c build/obj_files/magic.o
+ .debug_line    0x000000000001577c      0x55f build/obj_files/pppol2tp.o
+ .debug_line    0x0000000000015cdb      0x55a build/obj_files/eap.o
+ .debug_line    0x0000000000016235      0x564 build/obj_files/arc4.o
+ .debug_line    0x0000000000016799      0x563 build/obj_files/md5.o
+ .debug_line    0x0000000000016cfc      0x563 build/obj_files/md4.o
+ .debug_line    0x000000000001725f      0x564 build/obj_files/sha1.o
+ .debug_line    0x00000000000177c3      0x563 build/obj_files/des.o
+ .debug_line    0x0000000000017d26     0x3aa7 build/obj_files/tcp_out.o
+ .debug_line    0x000000000001b7cd      0x531 build/obj_files/udp.o
+ .debug_line    0x000000000001bcfe     0x1f49 build/obj_files/altcp_tcp.o
+ .debug_line    0x000000000001dc47      0xa16 build/obj_files/def.o
+ .debug_line    0x000000000001e65d     0x1851 build/obj_files/altcp.o
+ .debug_line    0x000000000001feae      0x5b3 build/obj_files/stats.o
+ .debug_line    0x0000000000020461     0x2625 build/obj_files/netif.o
+ .debug_line    0x0000000000022a86     0x2aa1 build/obj_files/pbuf.o
+ .debug_line    0x0000000000025527     0x438a build/obj_files/tcp_in.o
+ .debug_line    0x00000000000298b1     0x163f build/obj_files/raw.o
+ .debug_line    0x000000000002aef0      0x620 build/obj_files/ip.o
+ .debug_line    0x000000000002b510      0x531 build/obj_files/dns.o
+ .debug_line    0x000000000002ba41      0x5e3 build/obj_files/altcp_alloc.o
+ .debug_line    0x000000000002c024     0x1369 build/obj_files/timeouts.o
+ .debug_line    0x000000000002d38d     0x43c3 build/obj_files/tcp.o
+ .debug_line    0x0000000000031750      0x53a build/obj_files/sys.o
+ .debug_line    0x0000000000031c8a     0x1026 build/obj_files/memp.o
+ .debug_line    0x0000000000032cb0      0x7c4 build/obj_files/init.o
+ .debug_line    0x0000000000033474     0x12c4 build/obj_files/inet_chksum.o
+ .debug_line    0x0000000000034738     0x1a99 build/obj_files/mem.o
+ .debug_line    0x00000000000361d1     0x1199 build/obj_files/icmp.o
+ .debug_line    0x000000000003736a      0x539 build/obj_files/autoip.o
+ .debug_line    0x00000000000378a3     0x1ab8 build/obj_files/ip4.o
+ .debug_line    0x000000000003935b     0x1cc5 build/obj_files/igmp.o
+ .debug_line    0x000000000003b020     0x136d build/obj_files/ip4_addr.o
+ .debug_line    0x000000000003c38d     0x2195 build/obj_files/etharp.o
+ .debug_line    0x000000000003e522      0x537 build/obj_files/dhcp.o
+ .debug_line    0x000000000003ea59     0x2102 build/obj_files/ip4_frag.o
+ .debug_line    0x0000000000040b5b       0xba build/obj_files/start.o
+ .debug_line    0x0000000000040c15      0x111 build/obj_files/trap.o
 
 .debug_str      0x0000000000000000    0x1d476
  .debug_str     0x0000000000000000    0x1573a build/obj_files/main.o
